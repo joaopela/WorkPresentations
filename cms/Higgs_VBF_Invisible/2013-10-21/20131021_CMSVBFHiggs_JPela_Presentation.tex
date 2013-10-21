@@ -1,0 +1,444 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[João Pela]{J. Pela}
+\title[]{Trigger Studies Update}
+\institute{Imperial College London}
+\date{2012-02-22}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction and Motivation}
+
+\begin{block}{Motivation}
+
+  \begin{itemize}
+    \item Understand the possible improvement brought by lower threshold from parked data triggers
+    \item Quantify the possible loss of signal efficiency by selecting only $L1T\_ETM{40/50}$ seeded HLT triggers
+    \item Compare at parked/prompt datasets at first few cuts (QCD dominated) to check how much more data slips in from addition trigger efficiency
+          over offline variables.
+  \end{itemize}
+  
+\end{block}
+
+\begin{block}{Notes:}
+
+  Last signal efficiency study:
+  \begin{itemize}
+    \item Did not include PU weighting of sample.
+    \item Was over Pythia 120 GeV mass point, not POWHEG 125 GeV.
+    \item Only HLT and no other cuts.
+  \end{itemize}
+  
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{MC POWHEG Signal $m_H=125$ $[GeV]$}
+
+Total processed events 100047.
+
+\begin{columns}
+   
+\column[t]{5.75cm}  
+\begin{block}{HLT (no L1 selection)}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{HLTMetClean} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v      & 11867 & 0.118617 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v &  7840 & 0.0783716 \\
+  & $Y \&\& B$                                    &  7363 & 0.0736024 \\
+  & $NOT(Y) \&\& B$                               & 4503 & \cellcolor{yellow} 0.0450147 \\
+\hline
+\end{tabular}
+}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{JetPair} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 7611 & 0.368179 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 5174 & 0.250319 \\
+ & $Y \&\& B$  & 5060 & 0.244792 \\
+ & $NOT(Y) \&\& B$ & 2550 & \cellcolor{yellow} 0.123387 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{MET} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 2994 & 0.852396 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 2762 & 0.786315 \\
+ & $Y \&\& B$  & 2755 & 0.784286 \\
+ & $NOT(Y) \&\& B$ & 239 & \cellcolor{yellow} 0.0681106 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{TightMjj} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 1769 & 0.897424 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1766 & 0.895625 \\
+ & $Y \&\& B$ & 1766 & 0.895625 \\
+ & $NOT(Y) \&\& B$ & 3 & \cellcolor{red} 0.0017983 \\
+\hline
+\end{tabular}
+}
+ 
+\end{block}
+\column[t]{5.75cm}  
+
+\begin{block}{HLT + $L1\_ETM40$}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{HLTMetClean} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v      &  11838 & 0.118328 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v &   7840 & 0.0783716 \\
+  & $Y \&\& B$                                    &   7363 & 0.0736024 \\
+  & $NOT(Y) \&\& B$                               &  4474 & \cellcolor{yellow} 0.0447255 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{JetPair} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 7584 & 0.366863 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 5174 & 0.250319 \\
+ & $Y \&\& B$  & 5060 & 0.244792 \\
+ & $NOT(Y) \&\& B$ & 2523 & \cellcolor{yellow} 0.12207 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{MET} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 2993 & 0.852052 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 2762 & 0.786315 \\
+ & $Y \&\& B$  & 2755 & 0.784286 \\
+ & $NOT(Y) \&\& B$ & 238 & \cellcolor{yellow} 0.0677662 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{TightMjj} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 1768 & 0.89681 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1766 & 0.895625 \\
+ & $Y \&\& B$ & 1766 & 0.895625 \\
+ & $NOT(Y) \&\& B$ & 2 & \cellcolor{red} 0.00118482 \\
+\hline
+\end{tabular}
+}
+ 
+\end{block}
+
+\end{columns}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Signal loss by cut}
+
+\begin{block}{Some conclusions:}
+
+\begin{itemize}
+  \item By selecting HLT + L1\_ETM40 the signal losses are very small.
+  \begin{itemize}
+    \item We can ignore safely L1\_HTT* seed, events and have only L1\_ETM(40/50) seeded events.
+  \end{itemize}  
+  \item Extra signal captured by parked HLT paths gets completely cut at TightMjj level.
+\end{itemize}
+
+
+\end{block}
+
+\begin{columns}
+ 
+\column[t]{5.75cm}  
+
+\begin{block}{By selection cut:}
+ 
+\centering 
+\begin{tabular}{|c|c|}
+\hline
+Cut & Extra parked data only \\
+\hline
+HLTMetClean & +57.06\% \\
+JetPair     & +36.60\% \\
+MET         &  +8.62\% \\
+TightMjj    &  +0.11\% \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\column[t]{5.75cm}
+
+\begin{block}
+
+\begin{itemize}
+  \item Extra signal loss happens over Dijet selection, MET and TightMjj.
+  \item Biggest losses in order MET, Dijet and TightMjj.
+\end{itemize} 
+
+\end{block}
+
+\end{columns}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Looking at parked data}
+
+\begin{columns}
+ 
+\column[t]{5.75cm}  
+\begin{block}{HLT (no L1 selection)}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{HLTMetClean} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 440729619 & 0.662568 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 235130753 & 0.353483 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 189001007 & 0.284134 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1814693 & 0.00272811 \\
+ & $Y \&\& (B || D)$ & 1790408 & 0.0026916 \\
+ & $NOT(Y) \&\& (B || D)$ & 544396898 & 0.818416 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{JetPair} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 310907131 & 0.712993 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 132694485 & 0.304304 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 124121953 & 0.284645 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1283460 & 0.00294331 \\
+ & $Y \&\& (B || D)$ & 1268120 & 0.00290814 \\
+ & $NOT(Y) \&\& (B || D)$ & 351204890 & 0.805406 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{MET} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 20359 & 0.933043 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 8216 & 0.376535 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 8419 & 0.385839 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 14987 & 0.686847 \\
+ & $Y \&\& (B || D)$ & 14897 & 0.682722 \\
+ & $NOT(Y) \&\& (B || D)$ & 5902 & 0.270486 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{TightMjj} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 14622 & 0.973372 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 5830 & 0.388097 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 6243 & 0.41559 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 11531 & 0.767608 \\
+ & $Y \&\& (B || D)$ & 11525 & 0.767208 \\
+ & $NOT(Y) \&\& (B || D)$ & \cellcolor{yellow} 3145 & 0.20936 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\column[t]{5.75cm}  
+\begin{block}{HLT + L1\_ETM40}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{HLTMetClean} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 345421106 & 0.519287 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 178551498 & 0.268424 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 151920851 & 0.228389 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1814693 & 0.00272811 \\
+ & $Y \&\& (B || D)$ & 1790408 & 0.0026916 \\
+ & $NOT(Y) \&\& (B || D)$ & 426594673 & 0.641319 \\
+\hline
+\end{tabular}
+}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{JetPair} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 241908346 & 0.55476 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 97093083 & 0.22266 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 98087820 & 0.224941 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 1283460 & 0.00294331 \\
+ & $Y \&\& (B || D)$ & 1268120 & 0.00290814 \\
+ & $NOT(Y) \&\& (B || D)$ & 271250542 & 0.62205 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{MET} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 18499 & 0.8478 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 7345 & 0.336618 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 7555 & 0.346242 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 14987 & 0.686847 \\
+ & $Y \&\& (B || D)$ & 14897 & 0.682722 \\
+ & $NOT(Y) \&\& (B || D)$ &  4031 & 0.184739 \\
+\hline
+\end{tabular}
+}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||l|r|l|}
+\hline
+\multicolumn{4}{|c|}{TightMjj} \\
+\hline \hline
+Ref & Algorithm & Count & Eff [\%] \\
+\hline \hline
+B & HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 13045 & 0.868393 \\
+D & HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v & 5059 & 0.336773 \\
+E & HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v & 5471 & 0.364199 \\
+Y & HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v & 11531 & 0.767608 \\
+ & $Y \&\& (B || D)$ & 11525 & 0.767208 \\
+ & $NOT(Y) \&\& (B || D)$ & \cellcolor{yellow} 1565 & 0.104181 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+ 
+\end{columns}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Conclusions}
+
+\begin{block}
+
+\begin{itemize}
+  \item All extra parked data passing TightMjj cuts of current analysis is most likely only background.
+  \item Assuming the number of event from prompt data analysis at TightMjj level (12118 events) we have additionally in parked:
+  \begin{itemize}
+    \item Without L1 selection: +25.95\%
+    \item With $L1T\_ETM$ seed: +12.91\%
+  \end{itemize}
+  \item This difference is most likely due to recovered events with offline variables passing the requirements of parked data only. 
+  \begin{itemize}
+    \item Implies (something we already knew) current working point is not where trigger is fully efficient.
+  \end{itemize}
+  \item Need to optimize at least variables up to TightMjj level, to even recover signal to background ration at TightMjj level.
+\end{itemize} 
+
+\end{block}
+
+\end{frame}
+
+\end{document}
