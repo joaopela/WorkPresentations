@@ -1,0 +1,208 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[João Pela]{J. Pela}
+\title[]{MC VBF+MET QCD Samples}
+\institute{Imperial College London}
+\date{2013-11-17}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction and Motivation}
+
+\begin{block}{Motivation}
+
+  \begin{itemize}
+    \item Create a set of QCD MC samples that would model adequately events passing our selection.
+    \item Generate enough statistics to represent 2012 dataset (~20 $fb^{-1}$)
+  \end{itemize}
+  
+\end{block}
+
+\begin{block}{Caveats:}
+
+  \begin{itemize}
+    \item Huge cross section of QCD
+    \item We cannot do post RECO selection since this would too time consuming.
+    \item Need to define a QCD Hard scattering minimum to avoid rising cross section of low $p_T$
+          interactions where VBF+MET type events are not likely anyway
+  \end{itemize}
+  
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Methodology}
+
+We will be looking at gen level particles only to avoid the RECO process
+
+\begin{block}{MET}
+
+  \begin{itemize}
+    \item Select all produced neutrinos and add them vectorially.
+    \item Determine their $p_T$.
+  \end{itemize}
+
+\end{block}
+
+\begin{block}{VBF Jets}
+
+  \begin{itemize}
+    \item Run AK5 genJets (without neutrinos) over gen-particles.
+    \item Select all jets with a given $p_T$ and $|\eta|$.
+    \item Calculate $\Delta\eta$ and $M_{jj}$ for all possible dijet combinations.
+    \item Accept event if one of combinations passes all requirements.
+  \end{itemize}
+
+\end{block}
+
+\begin{block}{Caveats:}
+ 
+  \begin{itemize}
+    \item Thresholds must be set carefully and low enough to represent the QCD that actually passes the
+          analysis (at some cut L1+HLT, dijet, etc).
+    \item Trigger/variable turn on and efficiency should be taken into account.
+  \end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{QCD Cross Sections and event predictions for 20 $fb^{-1}$}
+
+From the current samples and cross sections we can easily extrapolate what would be the expected
+number of events for each $p_T$ hat for an integrated luminosity of 20 $fb^{-1}$.
+
+\begin{block}
+
+\centering
+\begin{tabular}{|l||c|c|}
+\hline
+\hline \hline
+Sample & Cross Section (pb) & Events for 20 $fb^{-1}$ \\
+\hline \hline
+QCD-Pt-30to50-pythia6     & 66285328    & 1325706560000 \\
+QCD-Pt-50to80-pythia6     & 8148778     & 162975560000 \\
+QCD-Pt-80to120-pythia6    & 1033680     & 20673600000 \\
+QCD-Pt-120to170-pythia6   & 156293,3    & 3125866000 \\
+QCD-Pt-170to300-pythia6   & 34138,15    & 682763000 \\
+QCD-Pt-300to470-pythia6   & 1759,549    & 35190980 \\
+QCD-Pt-470to600-pythia6   & 113,8791    & 2277582 \\
+QCD-Pt-600to800-pythia6   & 26,9921     & 539842 \\
+QCD-Pt-800to1000-pythia6  & 3,550036    & 71000,72 \\
+QCD-Pt-1000to1400-pythia6 & 0,737844    & 14756,88 \\
+QCD-Pt-1400to1800-pythia6 & 0,03352235  & 670,45 \\
+QCD-Pt-1800-pythia6       & 0,001829005 & 36,58 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+If we consider a minimum $p_T$ for hard scattering of 80 GeV the total cross section for 1226016 $pb$ which
+implies we need a a rejection factor of 10000 to be able to produce a 20 $fb^{-1}$ sample with 2.5M 
+events.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First tests}
+ 
+table and discussion of choice of values
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Filter Efficiency per $p_T$ hat}
+ 
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{9}{|c|}{Cross Sections} \\
+\hline \hline
+                 Sample & Gen. Ev & Pass MET & Pass Dijet &   Factor & Sample & Ev. Size &  Sample & Sample size \\
+\hline \hline
+QCD-Pt-50to80-pythia6   & 1000000 &      127 &          3 & 0,000003 & 488927 &    82,00 & 1000000 &  82,00 \\
+QCD-Pt-80to120-pythia6  & 1000000 &     1172 &         41 & 0,000041 & 847618 &    70,73 & 2000000 & 141,46 \\
+QCD-Pt-120to170-pythia6 & 1000000 &     4276 &        293 & 0,000293 & 915879 &    68,26 & 2000000 & 136,52 \\
+QCD-Pt-170to300-pythia6 & 1000000 &     9315 &       1012 & 0,001012 & 690956 &    66,21 & 3500000 & 231,72 \\
+QCD-Pt-300to470-pythia6 & 1000000 &    17956 &       2598 & 0,002598 &  91426 &    67,36 &  200000 &  13,47 \\
+QCD-Pt-470to600-pythia6 & 1000000 &    23913 &       4187 & 0,004187 &   9536 &    68,55 &  100000 &   6,85 \\
+\hline
+\end{tabular}
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Steps for production}
+ 
+Explain steps to be done and CMSSW versions
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Production Status}
+ 
+Explain steps to be done and CMSSW versions
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Problems found}
+ 
+PU etc.
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Conclusions}
+
+\begin{block}
+
+\begin{itemize}
+  \item 
+\end{itemize} 
+
+\end{block}
+
+\end{frame}
+
+\end{document}
