@@ -1,0 +1,106 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[João Pela]{J. Pela}
+\title[]{MC VBF+MET QCD Samples Status}
+\institute{Imperial College London}
+\date{2013-11-25}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}
+
+For the GEN-SIM step:
+\begin{block}{Step I - Status}
+ 
+\centering
+\begin{tabular}{|l||c|c|}
+\hline
+Sample          & Jobs & Done \\
+\hline \hline
+VBFQCD\_Pt\_80to120\_MET40\_step1\_part1\_v1 & 5000 & 4166 \\
+VBFQCD\_Pt\_80to120\_MET40\_step1\_part2\_v1 & 5000 & 3216 \\
+VBFQCD\_Pt\_120to170\_MET40\_step1\_v1      & 3500 & 1255 \\
+VBFQCD\_Pt\_170to300\_MET40\_step1\_v1      & 2750 & 2040 \\
+VBFQCD\_Pt\_300to470\_MET40\_step1\_v1      &  400 &  330 \\
+VBFQCD\_Pt\_470to600\_MET40\_step1\_v1      &  250 &  250 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+For the REDIGI adding PU step (partial sample):
+\begin{block}{Step II - Status}
+ 
+\centering
+\begin{tabular}{|l||c|c|}
+\hline
+Sample          & Jobs & Done \\
+\hline \hline
+VBFQCD\_Pt\_80to120\_MET40\_step2\_v1  & 336 & 121 \\
+VBFQCD\_Pt\_120to170\_MET40\_step2\_v1 &   9 &   5 \\
+BFQCD\_Pt\_170to300\_MET40\_step2\_v1  &  49 &  27 \\
+VBFQCD\_Pt\_300to470\_MET40\_step2\_v1 &  67 &  28 \\
+VBFQCD\_Pt\_470to600\_MET40\_step2\_v1 &   5 &   4 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Conclusions}
+
+\begin{block}{Status and next steps}
+
+\begin{itemize}
+  \item Had to resubmit step 1... forgot to include SIM on in (removed for my initial tests)
+  \item Step 2 now includes samples indicated by Phat for PU and first test jobs over step one successfully finished
+  \item Already tested steps 1 to 3 offline and all works.
+  \item Now using white list for step 1 which greatly reduced errors
+\end{itemize} 
+
+\end{block}
+
+\end{frame}
+
+\end{document}
