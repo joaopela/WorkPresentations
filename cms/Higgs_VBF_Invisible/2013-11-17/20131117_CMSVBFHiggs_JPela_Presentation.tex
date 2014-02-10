@@ -32,7 +32,7 @@
 \author[João Pela]{J. Pela}
 \title[]{MC VBF+MET QCD Samples}
 \institute{Imperial College London}
-\date{2013-11-17}
+\date{2013-11-18}
 
 % The log drawn in the upper right corner.
 \logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
@@ -145,60 +145,111 @@ events.
 \end{frame}
 
 % ###################################################
-\begin{frame}{First tests}
- 
-table and discussion of choice of values
- 
-\end{frame}
-
-% ###################################################
 \begin{frame}{Filter Efficiency per $p_T$ hat}
+  
+I tested a working point similar to trigger thresholds:
+\begin{block}{Filter conditions:}
+
+  \begin{itemize}
+    \item $MET(neutrinos)>40$ $GeV$
+    \item Jets $p_T>20$ $GeV$ and $|\eta|<5.0$
+    \item $\Delta\eta>3.2$ and $M_{jj}>700$ $GeV$
+  \end{itemize}
  
-\begin{tabular}{|l||c|c|c|c|c|c|c|c|}
+\end{block}
+
+\begin{block}{Efficiency:}
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c|c|c|}
 \hline
-\multicolumn{9}{|c|}{Cross Sections} \\
+\multicolumn{6}{|c|}{Cross Sections} \\
 \hline \hline
-                 Sample & Gen. Ev & Pass MET & Pass Dijet &   Factor & Sample & Ev. Size &  Sample & Sample size \\
+                 Sample & Gen. Ev & Pass MET & Pass Dijet &   Factor & Sample \\
 \hline \hline
-QCD-Pt-50to80-pythia6   & 1000000 &      127 &          3 & 0,000003 & 488927 &    82,00 & 1000000 &  82,00 \\
-QCD-Pt-80to120-pythia6  & 1000000 &     1172 &         41 & 0,000041 & 847618 &    70,73 & 2000000 & 141,46 \\
-QCD-Pt-120to170-pythia6 & 1000000 &     4276 &        293 & 0,000293 & 915879 &    68,26 & 2000000 & 136,52 \\
-QCD-Pt-170to300-pythia6 & 1000000 &     9315 &       1012 & 0,001012 & 690956 &    66,21 & 3500000 & 231,72 \\
-QCD-Pt-300to470-pythia6 & 1000000 &    17956 &       2598 & 0,002598 &  91426 &    67,36 &  200000 &  13,47 \\
-QCD-Pt-470to600-pythia6 & 1000000 &    23913 &       4187 & 0,004187 &   9536 &    68,55 &  100000 &   6,85 \\
+QCD-Pt-50to80-pythia6   & 1000000 &      127 &          3 & 0,000003 & 488927 \\
+QCD-Pt-80to120-pythia6  & 1000000 &     1172 &         41 & 0,000041 & 847618 \\
+QCD-Pt-120to170-pythia6 & 1000000 &     4276 &        293 & 0,000293 & 915879 \\
+QCD-Pt-170to300-pythia6 & 1000000 &     9315 &       1012 & 0,001012 & 690956 \\
+QCD-Pt-300to470-pythia6 & 1000000 &    17956 &       2598 & 0,002598 &  91426 \\
+QCD-Pt-470to600-pythia6 & 1000000 &    23913 &       4187 & 0,004187 &   9536 \\
 \hline
 \end{tabular}
- 
+} 
+\end{block}
+
+With the obtained rejection factor we can generate the equivalent of 20 $fb^{-1}$ with 3M events I will have to generate at least twice that.
+
 \end{frame}
 
 % ###################################################
 \begin{frame}{Steps for production}
  
-Explain steps to be done and CMSSW versions
+I am replicating the production process of Summer 2012 QCD samples Production so they match the currently used QCD samples. Samples are produced over 3 steps:
+
+\begin{block}{Step 1 - Hard process}
+ 
+  \begin{itemize}
+    \item Made with CMSSW\_5\_0\_0\_patch2.
+    \item Using Pythia6 QCD normal configuration fragments with 2 additional filters over GEN level.
+  \end{itemize} 
+ 
+\end{block}
+
+\begin{block}{Step 2 - Pileup addition}
+ 
+  \begin{itemize}
+    \item Made with CMSSW\_5\_3\_2\_patch4
+    \item Doing REDIGI using frontier tags START53\_V7A and for pileup 2012\_Summer\_50ns\_PoissonOOTPU
+  \end{itemize} 
+ 
+\end{block}
+
+\begin{block}{Step 1 - RECO}
+ 
+  \begin{itemize}
+    \item Made with CMSSW\_5\_3\_2\_patch4 
+    \item RECO process and output of AODSIM output
+  \end{itemize} 
+ 
+\end{block}
  
 \end{frame}
 
 % ###################################################
 \begin{frame}{Production Status}
  
-Explain steps to be done and CMSSW versions
- 
-\end{frame}
+\begin{block}{Step I - Status}
 
-% ###################################################
-\begin{frame}{Problems found}
- 
-PU etc.
- 
+\centering
+\begin{tabular}{|l||c|c|c|c|c|}
+\hline
+Sample          & Jobs & Done &  Events & Target & Int. Lumi ($fb^{-1}$) \\
+\hline \hline
+QCD-Pt-80to120  & 5000 &  206 &       ? & 847618 &  \\
+QCD-Pt-120to170 & 3500 & 3500 & 1985505 & 915879 &  43.36 \\
+QCD-Pt-170to300 & 5000 & 5000 & 3465175 & 690956 & 100.30 \\
+QCD-Pt-300to470 &  400 &  400 &  214621 &  91426 &  46.95 \\
+QCD-Pt-470to600 &  250 &  250 &  104264 &   9536 & 218.67 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+All samples except QCD-Pt-80to120 (had to be resubmitted) have finished step 1 and have been published on cms\_dbs\_ph\_analysis\_01.
+
 \end{frame}
 
 % ###################################################
 \begin{frame}{Conclusions}
 
-\begin{block}
+\begin{block}{Status and next steps}
 
 \begin{itemize}
-  \item 
+  \item Working point with the necessary rejection factor was determined and samples are now under production
+  \item Currently stuck at step 1 since PU samples are needed for the mixing (in contact with experts)
+  \item Validation in start in parallel to production.
+  \item To note the this samples will simulated events with real MET and real genJets, and not events where full MET or jets are faked.
 \end{itemize} 
 
 \end{block}
