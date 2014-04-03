@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{appendixnumberbeamer}
 \usepackage{feynmp}         % For latex produced Feynman Diagrams
+\usepackage{pgfgantt}
 
 \newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
 
@@ -53,10 +54,10 @@
  
 \begin{block}{SM Higgs boson compatibility}
  
-All measurements of the 125 GeV boson to date indicate compatibility with a SM Higgs boson, but:
+All measurements of the 125 GeV boson to date are compatible with a SM Higgs boson, but:
 \begin{itemize}
- \item associated uncertainties are large
- \item the possibility for non-SM properties remains
+ \item Associated uncertainties are large.
+ \item Possibility for non-SM properties remains.
 \end{itemize}
 
 Additional SM-like Higgs bosons have been excluded over a wide mass range, additional Higgs bosons with exotic decay modes remains a possibility, and are predicted by many models.
@@ -76,13 +77,13 @@ Additional SM-like Higgs bosons have been excluded over a wide mass range, addit
 
 The ATLAS and CMS collaborations have used the visible decay modes to infer limits on the invisible branching fraction of the 125 GeV Higgs boson:
 \begin{itemize}
- \item ATLAS: upper limit of 60\%
- \item CMS: upper limit limit is 64\%
+ \item ATLAS: upper limit of 60\% (ATLAS-CONF-2013-034) 
+ \item CMS: upper limit oh 64\% (CMS-PAS-HIG-12-45)
 \end{itemize}
 
 \end{block}
 
-\begin{block}{Motivations direct searches for invisible decays:}
+\begin{block}{Motivations for direct searches for invisible decays:}
 
 \begin{itemize}
  \item Observation of a signal in such searches would be a \uline{clear indication} of physics beyond the SM.
@@ -101,7 +102,7 @@ The ATLAS and CMS collaborations have used the visible decay modes to infer limi
 \column[t]{0.45\linewidth}
 \begin{block}{Direct searches channels}
 
-On direct searches rely on associated production modes, where the Higgs recoils against a visible system.
+Direct searches rely on associated production modes, where the Higgs recoils against a visible system.
 \begin{itemize}
  \item Z Associated production: Low production cross section; Clear final state, but low sensitivity with the available data.
  \item VBF mode: Substantially higher cross section. Shown to offer greater sensitivity to invisible decays.
@@ -121,8 +122,8 @@ On direct searches rely on associated production modes, where the Higgs recoils 
 
 Search for final states with:
 \begin{itemize}
- \item two jets and large missing energy
- \item use the distinct topology of the VBF jets to distinguish invisible Higgs decays from background
+ \item Two jets and large missing energy.
+ \item Use the distinct topology of the VBF jets to distinguish invisible Higgs decays from background.
 \end{itemize}
  
 \end{block}
@@ -131,14 +132,14 @@ Search for final states with:
 
 Major:
 \begin{itemize}
- \item $Z \rightarrow \nu \nu$, in association with jets
- \item $W \rightarrow l \nu$, with charged lepton misidentified
+ \item $\Z \rightarrow \nu \nu$, in association with jets
+ \item $\W \rightarrow \ell \nu$, with charged lepton misidentified
 \end{itemize}
 
 Minor:
 \begin{itemize}
- \item Mismeasurement of QCD events
- \item Other SM processes
+ \item Mismeasured QCD events
+ \item Other SM processes ($\W\W,\Z\Z,t\bar{t}, etc.$)
 \end{itemize}
 
 \end{block}
@@ -148,18 +149,60 @@ Minor:
 \end{frame}
 
 % ###################################################
+\begin{frame}{The CMS Experiment}
+ 
+\begin{block}{Compact Muon Solenoid}
+
+    \begin{columns}
+      \column[t]{6.5cm}
+
+      \begin{itemize}
+        \item Located at point 5 of the Large Hadron Collider 
+        \item General purpose experiment
+        \item Objective of studying a broad spectrum of physics
+        \item Classical onion structure
+        \item One of the most powerful solenoid ever built (3.8 $T$)
+      \end{itemize}  
+
+      \column[t]{4.5cm}
+      \begin{center}
+        \includegraphics[width=1.00\textwidth]{img/CMSOpen.jpg} 
+      \end{center}
+
+    \end{columns}
+
+\end{block}
+\begin{block}{CMS strong points for VBF Higgs to invisible search}  
+
+\begin{itemize}
+  \item High detector coverage ($\sim4 \pi$)
+  \begin{itemize}
+    \item Precise measurement of event properties
+    \item Accurate missing transverse energy calculation (MET)  
+  \end{itemize}
+  \item Excellent object position/energy resolution capabilities
+  \item Dedicated VBF trigger
+  \item This analysis utilises the information from all parts of the detector.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
 \begin{frame}{Analysis Definition}
  
 \begin{block}{Dedicated trigger}
  
+Requirements:
 \begin{itemize}
  \item Any forward/backward pair of jets satisfying:
  \begin{itemize}
-  \item pair of jets $p_t>40 GeV$
+  \item Jet $p_t>40 GeV$
   \item $\Delta\eta_{jj} = | \eta_{jet1} - \eta_{jet2}| > 3.5$
   \item High invariant mass ($m_{jj}>800$ GeV)
  \end{itemize}
- \item $MET>65$ GeV
+ \item $\met(\text{no }\mu)>65$ GeV
 \end{itemize}
  
 \end{block}
@@ -167,21 +210,21 @@ Minor:
 \begin{block}{Offline selection}
  
 \begin{itemize}
- \item Standard MET filters: remove anomalous calorimeter signals, beam halo, calorimeter laser calibration events and tracking failure. 
- \item Good vertex: ($|z|<24$ cm, $r<2$ cm) and $+10$ tracks
- \item $e/\mu$ veto: electron or muon with $p_t>10$ GeV
+ \item Filter mismeasured MET: remove anomalous calorimeter signals, beam halo, calorimeter laser calibration events and tracking failure. 
+ \item Good vertex: ($|z|<24$ cm, $r<2$ cm) and $10+$ tracks
+ \item Lepton veto: electron or muon with $p_t>10$ GeV
  
  \item Dijet: leading PF AK5 jet pair that pass pile-up jet rejection:
  \begin{itemize}
   \item $\eta_{jet1} . \eta_{jet2} < 0$
-  \item $p_t > 50$ GeV, $\eta < 4.7$
+  \item Jet $p_t > 50$ GeV and $\eta < 4.7$
   \item $m_{jj}>1100$ GeV
   \item $\Delta\phi_{jj} < 1.0$
  \end{itemize}
 
  \item $PF_{MET} > 130$ GeV
  
- \item Central Jet Veto (CJV): Veto if any jet at $\eta_{jet1} < \eta < \eta_{jet2}$ and $p_t>30$ GeV
+ \item Central Jet Veto (CJV): Veto events with any jet where $\eta_{jet1} < \eta_{j} < \eta_{jet2}$ and $p_t>30$ GeV
  
 \end{itemize}
  
@@ -193,41 +236,56 @@ Minor:
 % ###################################################
 \begin{frame}{Background Estimation Methods I}
 \Fontvi 
+
+We use data control regions and MC control to signal region ratios to extrapolate each major background contribution our signal region. For both $\Z$ and $\W$ background we use $\met(\text{no }\mu)$.
  
 \begin{block}{$\Z (\rightarrow \nu \nu)+$jets}
 
 Estimated from data using observable $\Z \rightarrow \mu \mu$ decays:
 
 \begin{itemize}
- \item Identical selection for signal region except lepton veto is replaced with a $\Z \rightarrow \mu \mu$ requirement.
- \item reconstructed muons with $p_t > 20 $ GeV, and $60 < M_{\mu\mu}<120$ GeV, 
- \item veto on additional leptons, 
- \item $\met$ recomputed after removing the \Z muons.  
- \item We use MC to extrapolate obtained control region yield to background contribution of this channel in the signal region
+ \item Identical selection for signal region except lepton veto is replaced with a $\Z \rightarrow \mu \mu$ requirement:
+ \begin{itemize}
+  \item {\Fontvi Require two reconstructed muons with $p_t > 20 $ GeV, and $60 < M_{\mu\mu}<120$ GeV }
+ \end{itemize}
+ \item Veto on additional leptons, 
 \end{itemize}
 
 \end{block}
- 
+
+\begin{columns}  
+\column[t]{0.73\linewidth}
+
 \begin{block}{$\W (\rightarrow \ell \nu)+$jets}
 
 For $\W \rightarrow {\rm e} \nu$ and $\W \rightarrow \mu \nu$ 
 \begin{itemize}
- \item Same method as $\Z (\rightarrow \nu \nu)+$jets
+ \item Similar method as $\Z (\rightarrow \nu \nu)+$jets
+ \begin{itemize}
+  \item {\Fontvi  Require one reconstructed ${\rm e}/\mu$ with $p_t > 20/10 $ GeV, and $|\eta| < 2.4/2.1$ GeV}
+ \end{itemize}
  \item Remove lepton veto and require a single charged lepton ($e/\mu$)
  \item Veto additional leptons
- \item $\met$ is recomputed after removing the W muon (not for the electron since was included on trigger)
+ \item Presence of $\W$ electron found to be negligible.
 \end{itemize}
 
 For $\W \rightarrow \tau\nu$ where the tau decays hadronically
 \begin{itemize}
  \item Control region is defined in the same way as $\W \rightarrow \ell \nu$
- \item Required one hadronic tau, no additional leptons
+ \item Require one hadronic tau, no additional leptons
  \item The central jet veto is not applied in order to increase the yield
 \end{itemize}
 
-Again for all $\W (\rightarrow \ell \nu)+$jets we using MC to extrapolate control region yield to background contribution of this channel in the signal region
-
 \end{block} 
+ 
+\column[t]{0.23\linewidth}
+\begin{block}{$\Z \rightarrow \nu \nu$ mass}
+
+\includegraphics[width=\linewidth]{img/ZCtrlZMass}
+
+\end{block}
+
+\end{columns}
  
 \end{frame}
 
@@ -245,22 +303,22 @@ Use the fractions of events passing the $\met$ and CJV cuts, after the full rema
  \item{D : pass $\met$, pass CJV}
 \end{itemize}
 
-We estimate the QCD multijet component in regions ABC by subtracting MC electroweak backgrounds from data. We then estimate the QCD multijet component in the signal region D, to be $D = BC / A$
+We estimate the QCD multijet component in regions A,B and C by subtracting MC electroweak backgrounds from data. We then estimate the QCD multijet component in the signal region D, to be $N_{D} = N_{B}N_{C} / N_{A}$.
 
 \end{block}
 
 \begin{block}{Other backgrounds}
  
-All other minor backgrounds were estimated from MC.
+All other minor backgrounds are estimated from MC.
  
 \end{block}
  
 \end{frame}
 
 % ###################################################
-\begin{frame}{Event Yield and Bkg. Estimation}
+\begin{frame}{Event Yield and Background Estimation}
 
-The results of the background estimation are summarised here:
+The signal yield is given for s 125 GeV Higgs with 100\% invisible branching fraction, produced via VBF with the SM production cross-section.
 
 \begin{block}{Yields}
 
@@ -279,6 +337,7 @@ QCD multijet 	 		& $36.8 \pm 5.6 \stat \pm 30.6 \syst$ \\
 Other SM			& $10.4 \pm 3.1 \syst$ \\
 \hline
 Total background		& $339 \pm 36 \stat \pm 50 \syst$  \\
+VBF H(inv)                      & $208$ \\
 Observed 			& $390$  \\	
 \hline
 \end{tabular}
@@ -286,17 +345,17 @@ Observed 			& $390$  \\
 
 \end{block}
 
-Assuming a 125 GeV Higgs with 100\% invisible branching fraction, produced via VBF with the SM production cross-section, the expected yield is 208 events. In the signal region in data, we observe 390 events, which is \uline{compatible with the background prediction}.
+In the signal region in data, we observe 390 events, which is \uline{compatible with the background prediction} within 1 $\sigma$.
 
 \end{frame}
 
 % ###################################################
 \begin{frame}{Limits on invisible Higgs}
  
-Assuming a background-only hypothesis, we place upper limits on an invisible Higgs signal.  
+We can place upper limits on an invisible Higgs signal.  
 \begin{itemize}
  \item Calculated to 95\% C.L. with an asymptotic ${\rm CL}_{\rm S}$ method
- \item Using the standard CMS Higgs combination technique
+ \item Using the standard CMS Higgs combination software package 
 \end{itemize}
  
 \begin{columns}
@@ -324,12 +383,12 @@ Assuming a background-only hypothesis, we place upper limits on an invisible Hig
  \item On the right, the same limits, normalised to the SM VBF production cross section.
 \end{itemize}
 
-Assuming the SM VBF production cross section, the observed limit on the invisible branching fraction of the 125 GeV Higgs 69\% and the expected limit is 53\%. 
+Assuming the SM VBF production cross section, the observed (expected) limit on the \\ invisible branching fraction of the 125 GeV Higgs is 69 (53)\%. 
 
 \end{frame}
 
 % ###################################################
-\begin{frame}{Combining VBF Inv. and ZH}
+\begin{frame}{Combining VBF H and ZH}
  
 Our results were combined with the ones from $ZH, (Z \rightarrow \ell\ell)$  analysis to obtain further sensitivity.
  
@@ -374,11 +433,11 @@ We used recently published results from CMS analysis  HIG-13-018 which reported 
 \begin{block}
 
 \begin{itemize}
- \item 95\% CL upper limit on the branching fraction of a Higgs boson to invisible final states as a function of the Higgs boson mass
- \item SM production cross-sections for the Higgs boson have been assumed
- \item For a Higgs boson mass of 125 GeV the observed (expected) upper limit on the invisible branching fraction is 54 (46)\%
- \item Systematic errors between analysis considered uncorrelated
- \item New combination result including $ZH, (Z \rightarrow b\bar{b})$ under final stages of approval/publication. 
+ \item 95\% CL upper limit on the branching fraction of a Higgs boson to invisible final states as a function of the Higgs boson mass.
+ \item SM production cross-sections for the Higgs boson have been assumed.
+ \item For a Higgs boson of mass 125 GeV the observed (expected) upper limit on the invisible branching fraction is 54 (46)\%.
+ \item Systematic errors between analyses are considered uncorrelated.
+ \item New combination result including $ZH, (Z \rightarrow b\bar{b})$ are under final stages of approval/publication and take into account all correlations.
 \end{itemize}
  
 \end{block}
@@ -394,13 +453,13 @@ We used recently published results from CMS analysis  HIG-13-018 which reported 
 
 \begin{itemize}
  \item A search for an invisibly decaying Higgs boson produced via vector boson fusion has been performed. 
- \item The analysis used of a dedicated trigger and offline selection to isolate events with significant missing energy and two jets with vector boson fusion characteristics
+ \item The analysis used a \uline{dedicated trigger and an offline cut} based selection to isolate events with significant \uline{missing energy and two jets} with vector boson fusion characteristics
  \item Major background estimated using data driven methods.  
- \item Using the full $\sqrt{s}=8$ TeV dataset recorded by CMS in 2012, a total of $339 \pm 36 \stat \pm 50 \syst$ events are expected in the signal region, from a background only hypothesis.  
- \item Assuming a 125 GeV Higgs produced via vector boson fusion, with 100\% invisible branching fraction, would be expected to yield 208 events. Yet observe 390 events in the signal region in data, which compatible with the expected background.
+ \item Using the full $\sqrt{s}=8$ TeV dataset recorded by CMS in 2012, a total of $339 \pm 36 \stat \pm 50 \syst$ events are expected in the signal region, from a background only hypothesis.
+ \item The signal yield for $m_H = 125$ with 100\% invisible branching fraction, would yield 208 events. We observe 390 events in the signal region in data, which is \uline{compatible with the expected background} at the 1 $\sigma$ level.
  \item Using an asymptotic ${\rm CL}_{\rm S}$ method, 95\% CL upper limits are placed on the production cross section times invisible branching fraction.  The observed limit on the invisible branching fraction of the 125 GeV Higgs is 69\%, with an expected limit of 53\%.  
- \item This measurement is the most sensitive to invisible decays of the Higgs boson to date.
- \item Combination with $ZH, (Z \rightarrow b\bar{b})$ is presented and the obtained observed (expected) upper limit on the invisible branching fraction is 54 (46)\%
+ \item A combination with $ZH, (Z \rightarrow b\bar{b})$ is presented and the observed (expected) upper limit on the invisible branching fraction is 54 (46)\%
+ \item This combination is the \uline{most sensitive} to invisible decays measurement of the Higgs boson to date.
 \end{itemize}
 
 \end{block}
@@ -417,6 +476,55 @@ We used recently published results from CMS analysis  HIG-13-018 which reported 
 \begin{center}Backup Slides\end{center}
 
 \end{block}
+
+\end{frame}
+
+\begin{frame}{Particle Detection on CMS}
+
+When a collision happens then resulting particles need to be identified and measured
+ 
+ \begin{block}{Detector Structure}
+
+  \begin{columns}
+    \column[t]{8.0cm}
+ 
+      \begin{center}
+        \includegraphics[width=1.00\textwidth]{img/CMS_Slice.png} 
+      \end{center}  
+      \column[t]{3.5cm}
+
+       \begin{itemize}
+         \item Tracker
+         \begin{itemize}
+           \item Charged particle trajectory
+         \end{itemize}
+         \item ECAL and HCAL
+         \begin{itemize}
+           \item Energy Measurement
+         \end{itemize}
+         \item Solenoid
+         \begin{itemize}
+           \item Charge and Momentum 
+         \end{itemize} 
+         \item Muon Chambers
+         \begin{itemize}
+           \item Muon identification and measurement 
+         \end{itemize} 
+         \item Trigger (L1+HLT)
+         \begin{itemize}
+           \item Event Selection 
+         \end{itemize} 
+       \end{itemize}
+
+    \end{columns}
+
+  \end{block}
+
+  \begin{itemize}
+    \item Detector subsystems are designed to take advantage of particle characteristics in order to identify and measure
+          their properties.
+    \item Trigger System is responsible to select only the most interesting events.
+  \end{itemize} 
 
 \end{frame}
 
