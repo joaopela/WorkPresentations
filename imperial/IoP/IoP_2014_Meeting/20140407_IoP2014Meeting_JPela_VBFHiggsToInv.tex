@@ -196,16 +196,16 @@ Requirements:
 \begin{frame}{Background Estimation Methods I}
 \Fontvi 
 
-\begin{block}
+\begin{block}{Method}
  
 We use data control regions and MC control to signal region ratios to extrapolate each major background contribution our signal region. For both $\Z$ and $\W$ background we use $\met(\text{no }\mu)$.
 
 \end{block}
+\vspace{-.3cm}
 
 \begin{columns}  
 \column[t]{0.65\linewidth}
 \begin{block}{$\Z (\rightarrow \nu \nu)+$jets}
-
 
 \begin{itemize}
  \item Estimated from data using observable $\Z \rightarrow \mu \mu$ decays:
@@ -281,9 +281,7 @@ The signal yield is given for a 125 GeV Higgs with 100\% invisible branching fra
 
 \begin{block}{Yields}
 
-\begin{table}[th!]
-\centering
-% \caption{Summary of estimated backgrounds and observed yield in the signal region.}
+\begin{center}
 \begin{tabular}{|l|c|}
 \hline
 Background 	 		& $N_{\rm est}$ \\
@@ -300,8 +298,20 @@ VBF H(inv)                      & $208$ \\
 Observed 			& $390$  \\	
 \hline
 \end{tabular}
-\end{table}
+\end{center}
 
+\end{block}
+
+\begin{block}{Systematics:}
+ 
+ \Fontvi 
+ Largest source of uncertainty: statistical uncertainty in the $\Z \rightarrow \mu \mu$ control region.
+ \begin{itemize}
+  \item V+jets backgrounds MC ratio: 20\% uncertainty
+  \item Jet and $\met$ energy scales and resolution for $\Z \rightarrow \nu \nu$ and $\W \rightarrow \ell \nu$: 5-10\% uncertainty
+  \item Jet and $\met$ energy scales and resolution for $\W \rightarrow \tau_{\rm had} \nu$: 15\% uncertainty
+ \end{itemize} 
+ 
 \end{block}
 
 In the signal region in data, we observe 390 events, which is \uline{compatible with the background prediction} within 1 $\sigma$.
@@ -420,15 +430,9 @@ We used recently published results from CMS analysis  HIG-13-018 which reported 
   \item Expected signal of 208 events ($m_H = 125$ BR(Inv.)=100\%);
   \item Observed 390 events in data $\Rightarrow$ \uline{compatible with the expected background} at the 1 $\sigma$ level.
  \end{itemize}
- \item The largest source of uncertainty arises from the statistical uncertainty in the $\Z \rightarrow \mu \mu$ control region. Other important sources of uncertainty:
- \begin{itemize}
-  \item V+jets backgrounds MC ratio: 20\% uncertainty
-  \item Jet and $\met$ energy scales and resolution for $\Z \rightarrow \nu \nu$ and $\W \rightarrow \ell \nu$: 5-10\% uncertainty
-  \item Jet and $\met$ energy scales and resolution for $\W \rightarrow \tau_{\rm had} \nu$: 15\% uncertainty
- \end{itemize} 
- \item Using an asymptotic ${\rm CL}_{\rm S}$ method, 95\% CL upper limits are placed on the production cross section times invisible branching fraction.  The observed limit on the invisible branching fraction of the 125 GeV Higgs is 69\%, with an expected limit of 53\%.  
- \item A combination with $ZH, (Z \rightarrow b\bar{b})$ is presented and the observed (expected) upper limit on the invisible branching fraction is 54 (46)\%
- \item This combination is the \uline{most sensitive} to invisible decays measurement of the Higgs boson to date.
+ \item In the VBF channel the observed (expected) 95\% CL upper limit on the invisible branching fraction of the 125 GeV Higgs is 69 (53)\%
+ \item A combination with $ZH, (Z \rightarrow \ell\ell)$ is presented and the observed (expected) upper limit on the invisible branching fraction is 54 (46)\%
+ \item This combination is the \uline{most sensitive} to invisible decays of the Higgs boson to date
 \end{itemize}
 
 \end{block}
@@ -489,6 +493,7 @@ We used recently published results from CMS analysis  HIG-13-018 which reported 
 
 \end{frame}
 
+% ###################################################
 \begin{frame}{Particle Detection on CMS}
 
 When a collision happens then resulting particles need to be identified and measured
@@ -535,6 +540,75 @@ When a collision happens then resulting particles need to be identified and meas
           their properties.
     \item Trigger System is responsible to select only the most interesting events.
   \end{itemize} 
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Indirect Mesurements (CMS-PAS-HIG-13-005)}
+ 
+An alternative more general scenario than C6 can be obtained by allowing for a non-vanishing $\Gamma_{\rm{BSM}}$,
+but constraining $\kappa_{\rm{V}} \le 1$, a requirement motivated by electroweak symmetry breaking:
+
+\begin{columns}
+ 
+\column[t]{0.62\linewidth}
+\begin{block}{Assumptions:}
+
+\begin{itemize}
+\item The couplings to $\W$ and $\Z$ bosons are scaled by a common factor $\kappa_{\rm{V}}$;
+\item The couplings to third generation fermions, i.e. the top quark, bottom quark, and tau lepton, are scaled independently by $\kappa_{t}$, $\kappa_{b}$, $\kappa_{\tau}$;
+\item The scale factors for couplings to the first and second generation fermions are equal to those for the third;
+\item The effective couplings to gluons and photons, induced by loop diagrams, are given independent scaling factors $\kappa_{\rm{g}}$ and $\kappa_{\gamma}$, respectively;
+\item The partial width  $\kappa_{\rm{V}} \le 1$.
+\end{itemize}
+
+\end{block}
+ 
+\column[t]{0.32\linewidth}
+\begin{block}{Likelihood scan vs $\rm{BR}_{\rm{BSM}}$}
+
+\includegraphics[width=\textwidth]{img/sqr_BRiC7_scan_1d_comb_comp.pdf}
+
+\end{block}
+
+\end{columns}
+
+Figure shows the likelihood scan versus $\rm{BR}_{\rm{BSM}}$ derived in this scenario 
+while profiling all the other coupling modifiers and nuisance parameters.
+Within these assumptions, the data allow us to conclude that $\rm{BR}_{\rm{BSM}}$ is in the interval [0.00,0.64] at 95\% CL.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Asymptotic $CL_s$}
+
+The statistical significance of an observed signal can be quantified by means of a p-value or its equivalent Gaussian significance.
+
+\begin{block}
+ 
+\begin{itemize}
+ \item Useful to characterize the sensitivity of an experiment by reporting the expected (e.g., mean or median) significance that one would obtain for a variety of signal hypotheses.
+ \item Finding both the significance for a specific data set and the expected significance can involve Monte Carlo calculations that are computationally expensive. 
+\end{itemize}
+
+\end{block}
+
+With asymptotic approximate methods one can obtain, without recourse to Monte Carlo:
+
+\begin{block}
+ 
+\begin{itemize}
+ \item Significance for given data 
+ \item Full sampling distribution of the significance under the hypothesis of different signal models
+\end{itemize}
+
+In this way one can find:
+\begin{itemize}
+ \item The median significance
+ \item A measure of how much one would expect this to vary as a result of statistical fluctuations in the data
+\end{itemize}
+ 
+\end{block}
 
 \end{frame}
 
