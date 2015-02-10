@@ -1,0 +1,175 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{color}                 % For color (highlights,...) 
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{appendixnumberbeamer}
+% \usepackage{pdfpages}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{J. Pela}
+\title{Cross Check Analysis - Status Update and Unblind}
+\institute[ICL]{Imperial College London}
+\date{2015-01-13}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\setlength{\unitlength}{1mm}
+\newcommand*\rot{\rotatebox{90}}
+
+\begin{document}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Status and Plans}
+
+\begin{block}{Status}
+
+\begin{itemize}
+  \item Pre-selection: \colorbox{green}{Synchronised}
+  \item Electron + MET: \colorbox{green}{Synchronised}
+  \item Muon + MET: \colorbox{green}{Synchronised}
+  \item Tau + MET: \colorbox{red}{Analysis underway}
+  \item Z($\rightarrow\mu\mu$): \colorbox{green}{Synchronised}
+  \item Top: \colorbox{green}{Synchronised}
+  \item Signal region: \colorbox{green}{Synchronised}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Plans}
+ 
+\begin{itemize}
+  \item Implement QCD regions
+  \item Implement MC weights and MC processing (partly done)
+  \item Produce all relevant plots
+  \item Implement all background estimation methods
+  \item Implement all systematic estimation methods
+  \item Interface with limit code
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Tau + MET Region}
+
+\begin{block}{Data Yields}
+
+\centering
+\resizebox{0.65\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+ & \rotatebox{90}{DATA MET-2012A} & \rotatebox{90}{DATA MET-2012B} & \rotatebox{90}{DATA MET-2012C} & \rotatebox{90}{DATA MET-2012D} & \rotatebox{90}{DATA VBF-Parked} & \rotatebox{90}{DATA VBF-Parked 2012C} & \rotatebox{90}{DATA VBF-Parked 2012D} \\
+\hline \hline
+Vertex Filter & 3606391 & 15076553 & 21570165 & 59027309 & 132346320 & 228049748 & 308041846 \\
+Event Quality Filters & 2658960 & 10926634 & 15555671 & 44411435 & 131554431 & 226680352 & 305918529 \\
+ECAL Laser Filter & 2634271 & 10796003 & 15555671 & 44411435 & 131543040 & 226680352 & 305918529 \\
+HCAL Laser Filter & 2634080 & 10796000 & 15554899 & 44411435 & 131543040 & 226679741 & 305918529 \\
+L1T ETM Filter & 2461217 & 9316076 & 13668424 & 37528140 & 88174347 & 160560859 & 227801622 \\
+HLT Trigger & 97522 & 633305 & 1154795 & 2222706 & 75100422 & 137527238 & 152041761 \\
+$N(Electron_{Veto})=0$ & 96600 & 627254 & 1143298 & 2203960 & 74947192 & 137241812 & 151725585 \\
+$N(Muons_{Loose})=0$ & 94864 & 619954 & 1129380 & 2187440 & 74913002 & 137179173 & 151652654 \\
+\rowcolor{yellow} $N(Tau)=1$ & 522 & 3769 & 6669 & 12364 & 434308 & 778575 & 898825 \\
+Dijet & 78 & 536 & 1002 & 1724 & 51175 & 91871 & 92543 \\
+MET Cut & 33 & 146 & 247 & 283 & 207 & 368 & 417 \\
+\rowcolor{yellow}$M_{T}(MET,\tau)$ & 32 & 144 & 243 & 278 & 204 & 363 & 411 \\
+MET Significance & 11 & 42 & 62 & 58 & 46 & 63 & 58 \\
+\rowcolor{yellow}$Min(\Delta\phi(MET,jet(1,2)))$ & 5 & 26 & 34 & 38 & 28 & 34 & 38 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\begin{block}{Comparison between analysis}
+ 
+\centering
+\resizebox{0.35\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|}
+\hline
+Dataset & Main Analysis & Cross Check Analysis & $\frac{CC}{Main}-1$ \\ 
+\hline \hline
+Prompt A &  2 &  5 & +150\% \\
+Parked B & 22 & 28 & +27.2\% \\
+Parked C & 25 & 34 & +36.0\% \\
+Parked D & 27 & 38 & +40.7\% \\
+\hline \hline
+Total & 76 & 105 & +38.2\% \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+After inspecting both framework codes, no obvious problem is visible, so requested yields for yellow lines from main analysis for tracking down where the problem is.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{}
+
+\begin{block}{Data Yields}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+ & \rotatebox{90}{DATA MET-2012A} & \rotatebox{90}{DATA MET-2012B} & \rotatebox{90}{DATA MET-2012C} & \rotatebox{90}{DATA MET-2012D} & \rotatebox{90}{DATA VBF-Parked} & \rotatebox{90}{DATA VBF-Parked 2012C} & \rotatebox{90}{DATA VBF-Parked 2012D} \\
+\hline \hline
+Vertex Filter & 3606391 & 15076553 & 21570165 & 59027309 & 132346320 & 228049748 & 308041846 \\
+Event Quality Filters & 2658960 & 10926634 & 15555671 & 44411435 & 131554431 & 226680352 & 305918529 \\
+HCAL Laser Filter & 2634271 & 10796003 & 15555671 & 44411435 & 131543040 & 226680352 & 305918529 \\
+ECAL Laser Filter & 2634080 & 10796000 & 15554899 & 44411435 & 131543040 & 226679741 & 305918529 \\
+L1T ETM Filter & 2461217 & 9316076 & 13668424 & 37528140 & 88174347 & 160560859 & 227801622 \\
+HLT Trigger & 97522 & 633305 & 1154795 & 2222706 & 75100422 & 137527238 & 152041761 \\
+Electron veto & 96600 & 627254 & 1143298 & 2203960 & 74947192 & 137241812 & 151725585 \\
+Muon veto & 94864 & 619954 & 1129380 & 2187440 & 74913002 & 137179173 & 151652654 \\
+Dijet & 18338 & 120564 & 231884 & 404128 & 13678405 & 25090291 & 24082304 \\
+MET Cut & 4167 & 21119 & 37848 & 47094 & 38178 & 68047 & 79723 \\
+MET Significance & 786 & 2962 & 5325 & 4913 & 3396 & 5988 & 5567 \\
+MET Jets DPhi & 34 & 88 & 204 & 176 & 91 & 205 & 178 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\begin{center}
+Total events of MET A, parked (B,C,D) = 508, same number as the main analysis.
+\end{center}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+
+\begin{itemize}
+  \item Cross check analysis is progressing well.
+  \item Currently investigating the Tau + MET yields miss-match 
+  \item Signal region unblinded at the same time of main analysis and with the same exact yield :)
+  \item More in the coming weeks.
+\end{itemize}
+
+\begin{center}
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/VBFHInvParkedDataCrossCheck
+\end{center}
+
+\end{frame}
+
+
+
+\end{document}
