@@ -1010,7 +1010,7 @@ The totalsLock will acquire (or wait to acquire) the mutex when created, and whe
 % ###################################################
 \begin{frame}[fragile]{Conditional variables}
  
-While a mutex allows you to lock a resource for usage it tells you nothing about the content of the resource being ready for usage (example stack of events to process), this is where conditional variables can help.
+While a mutex allows you to lock a resource for usage it tells you nothing about the content of the resource itself (example: stack of events to process). Cconditional variables can help:
 
 \begin{exampleblock}{Code:}
  
@@ -1034,8 +1034,13 @@ void wait_for_data_to_process(){
 
 \end{exampleblock}
 
-Notice that the lock is passed to wait: wait will atomically add the thread to the set of threads waiting on the condition variable, and unlock the mutex. When the thread is woken, the mutex will be locked again before the call to wait returns. This allows other threads to acquire the mutex in order to update the shared data, and ensures that the data associated with the condition is correctly synchronised.
- 
+\begin{itemize}
+  \item Lock is passed to wait: wait will atomically add the thread to the set of threads waiting on the condition variable, and unlock the mutex.
+  \item When the thread is woken, the mutex will be locked again before the call to wait returns.
+  \item This allows other threads to acquire the mutex in order to update the shared data.
+  \item Wnsures that the data associated with the condition is correctly synchronised.
+\end{itemize}
+
 \end{frame}
 
 % ###################################################
