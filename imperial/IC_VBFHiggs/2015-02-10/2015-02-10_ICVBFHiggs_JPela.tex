@@ -1,0 +1,222 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{color}                 % For color (highlights,...) 
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{appendixnumberbeamer}
+% \usepackage{pdfpages}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{J. Pela}
+\title{Cross Check Analysis - QCD Regions}
+\institute[ICL]{Imperial College London}
+\date{2015-01-13}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\setlength{\unitlength}{1mm}
+\newcommand*\rot{\rotatebox{90}}
+
+\begin{document}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Status and Plans}
+
+\begin{block}{Status}
+
+\begin{itemize}
+  \item QCD Region studies with data finished (for now)
+  \item Synchronisation between main analysis and cross check analysis better than 2\% 
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Plans}
+
+\begin{itemize}
+  \item Writing current data results (all regions) in the cross check AN
+  \item Write corresponding thesis chapter
+  \item Implement MC weight and redo all studies in all regions
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{QCD Region: Event Yields}
+
+\begin{center}
+Up to the MET cut all regions used on this analysis have the same cuts.
+\end{center}
+
+\begin{block}{Status}
+
+\centering
+
+\resizebox{0.65\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+ & \rotatebox{90}{DATA MET 2012A} & \rotatebox{90}{DATA MET 2012B} & \rotatebox{90}{DATA MET 2012C} & \rotatebox{90}{DATA MET 2012D} & \rotatebox{90}{DATA VBF Parked 2012B} & \rotatebox{90}{DATA VBF Parked 2012C} & \rotatebox{90}{DATA VBF Parked 2012D} \\
+\hline \hline
+Vertex Filter           & 3606391 & 15076553 & 21570165 & 59027309 & 132346320 & 228049748 & 308041846 \\
+Event Quality Filters   & 2658960 & 10926634 & 15555671 & 44411435 & 131554431 & 226680352 & 305918529 \\
+ECAL Laser Filter       & 2634271 & 10796003 & 15555671 & 44411435 & 131543040 & 226680352 & 305918529 \\
+HCAL Laser Filter       & 2634080 & 10796000 & 15554899 & 44411435 & 131543040 & 226679741 & 305918529 \\
+L1T ETM$>=40$           & 2461217 &  9316076 & 13668424 & 37528140 &  88174347 & 160560859 & 227801622 \\
+HLT Path                &   97522 &   633305 &  1154795 &  2222706 &  75100422 & 137527238 & 152041761 \\
+$N(Electrons_{Veto})=0$ &   96600 &   627254 &  1143298 &  2203960 &  74947192 & 137241812 & 151725585 \\
+$N(Muon_{Loose})    =0$ &   94864 &   619954 &  1129380 &  2187440 &  74913002 & 137179173 & 151652654 \\
+Dijet cuts              &   18338 &   120564 &   231884 &   404128 &  13678405 &  25090291 &  24082304 \\
+$MET>=90$               &    4167 &    21119 &    37848 &    47094 &     38178 &     68047 &     79723 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\begin{center}
+As it can be seen a significant amount of events is available at this level of selection. 
+\end{center}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Regions Definition}
+
+\begin{center}
+Five regions are defined over 2 variables: $MET_{significance}$ and $Min(\Delta\phi(MET,j_{1}j_{2})$ and those regions get split into 10 with the variable $Min(\Delta\phi(MET,jets)$ at value 1.
+\end{center}
+
+\begin{block}{Regions}
+
+\begin{itemize}
+  \item QCD Shape
+  \begin{itemize}
+    \item Signal Like: $MET_{sig}>4$, $Min(\Delta\phi(MET,j_{1}j_{2})<1$, $Min(\Delta\phi(MET,jets)>1$
+    \item QCD Like   : $MET_{sig}>4$, $Min(\Delta\phi(MET,j_{1}j_{2})<1$, $Min(\Delta\phi(MET,jets)<1$
+  \end{itemize}
+  \item Norm1
+  \begin{itemize}
+    \item Signal Like: $3<MET_{sig}<4$, $1<Min(\Delta\phi(MET,j_{1}j_{2})<2$, $Min(\Delta\phi(MET,jets)>1$
+    \item QCD Like   : $3<MET_{sig}<4$, $1<Min(\Delta\phi(MET,j_{1}j_{2})<2$, $Min(\Delta\phi(MET,jets)<1$
+  \end{itemize}
+  \item Norm2
+  \begin{itemize}
+    \item Signal Like: $3<MET_{sig}<4$, $Min(\Delta\phi(MET,j_{1}j_{2})>2$, $Min(\Delta\phi(MET,jets)>1$
+    \item QCD Like   : $3<MET_{sig}<4$, $Min(\Delta\phi(MET,j_{1}j_{2})>2$, $Min(\Delta\phi(MET,jets)<1$
+  \end{itemize}
+  \item Norm3
+  \begin{itemize}
+    \item Signal Like: $MET_{sig}>4$, $1<Min(\Delta\phi(MET,j_{1}j_{2})<2$, $Min(\Delta\phi(MET,jets)>1$
+    \item QCD Like   : $MET_{sig}>4$, $1<Min(\Delta\phi(MET,j_{1}j_{2})<2$, $Min(\Delta\phi(MET,jets)<1$
+  \end{itemize}
+  \item Signal
+  \begin{itemize}
+    \item Signal Like: $MET_{sig}>4$, $Min(\Delta\phi(MET,j_{1}j_{2})>2.3$, $Min(\Delta\phi(MET,jets)>1$
+    \item QCD Like   : $MET_{sig}>4$, $Min(\Delta\phi(MET,j_{1}j_{2})>2.3$, $Min(\Delta\phi(MET,jets)<1$
+  \end{itemize}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Region Yields}
+
+\begin{center}
+Here are the results for data for each of the defined regions.
+\end{center}
+
+
+\begin{columns}
+\column[t]{0.47\linewidth}
+
+\begin{block}{$Min(\Delta\phi(MET,jets)<1$}
+\centering
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+Region & C.C. & Main & $\frac{CC}{Main}-1$ \\
+\hline \hline
+QCD shape & 13102 &   NA & NA \\
+Norm1     &  2772 & 2741 & +1.1\% \\
+Norm2     &  2110 &   NA & NA \\
+Norm3     &   791 &  787 & 0.5\% \\
+Signal    &   797 &   NA & NA \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\column[t]{0.47\linewidth}
+\begin{block}{$Min(\Delta\phi(MET,jets)>1$}
+\centering
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+Region & C.C. & Main & $\frac{CC}{Main}-1$ \\
+\hline \hline
+QCD shape & 2635 &   NA & NA \\
+Norm1     & 1603 & 1586 & +1.1\% \\
+Norm2     &  412 &  411 & +0.2\% \\
+Norm3     & 1523 & 1517 & +0.4\% \\
+Signal    &  652 &   NA & NA \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\end{columns}
+
+\begin{block}{Notes:}
+ 
+\begin{itemize}
+ \item The maximum observe yield disagreement is of the order of 1.1\% which is acceptable.
+ \item All values from the cross check analysis are bigger than the values of the main analysis (missing something?).
+ \item Also note that five value were not available from the main analysis because they are not in the note (QCD shape yields), still blinded (Signal region) or not available at this moment.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+
+\begin{block}{Conclusions and plans}
+ 
+
+
+\begin{itemize}
+  \item QCD value now can be considered synchronised at the data level.
+  \item TWiki will be update shortly.
+  \item I am not on the process of writing all data region results into the cross check analysis note (and respective thesis chapter).
+\end{itemize}
+
+\end{block}
+
+\begin{center}
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/VBFHInvParkedDataCrossCheck
+\end{center}
+
+\end{frame}
+
+
+
+\end{document}
