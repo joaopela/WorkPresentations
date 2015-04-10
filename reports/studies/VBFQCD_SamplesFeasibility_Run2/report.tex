@@ -1,0 +1,163 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+
+%  General style files
+\usepackage{fancybox}%         e.g. for calling out requirements, etc.
+\usepackage{multicol}%         multiple columns (e.g. glossary)
+\usepackage{longtable}% GOA: added 1 Jun 2007 for Christos
+\usepackage{array}%
+\usepackage{lineno}%           Does line numbers in margins (see \linenumbers command)
+
+% Override the (rather clunky) default fonts of LaTex throughout
+\usepackage{palatino}      % Choose default roman font.  Others are times, pslatex, newcent, bookman, chancery
+\usepackage{mathpazo}      % Matching math fonts (see http://www.math.uiuc.edu/~hartke/computer/latex/survey/survey.html)
+\usepackage{helvet}        % Choose default sans serif
+\usepackage{sectsty}       % Change style of headings (should precede section redefinitions below)
+\allsectionsfont{\sffamily}% Set sans serif for all headings
+
+\usepackage{fancyhdr}%        modern version of fancyheadings
+\usepackage{subfig}%
+\let\subfigure\subfloat% compatibility between subfigure and subfig packages
+\usepackage{xspace}%
+\usepackage{multirow}%
+\usepackage{dcolumn} % for aligning columns on decimal: rather picky
+
+\usepackage[table,usenames,dvipsnames]{xcolor}% just for warnings so far; do not use for journal submission without prior approval
+
+
+\usepackage[bookmarksnumbered,bookmarksopen,bookmarksopenlevel=1,colorlinks=false,pdfborder={0 0 0},plainpages=false,pdfpagelabels]{hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define the default parskip so it can be reset back to this after
+% it is locally changed in other environments
+\newlength{\parskipsaved}
+\setlength{\parskipsaved}{0.5\baselineskip}
+
+% Define page layout
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{235mm}
+\setlength{\columnsep}{10mm}
+\setlength{\columnseprule}{0.3pt}% if zero then there is no rule between 2 columns
+
+\if@twoside
+  \setlength{\oddsidemargin}{0mm}
+  \setlength{\evensidemargin}{0mm}
+\else
+  \setlength{\oddsidemargin}{0mm}
+  \setlength{\evensidemargin}{0mm}
+\fi
+
+\setlength{\footskip}{36pt}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{20pt}%     Distance from bottom of header to main body
+\setlength{\topmargin}{-8pt}
+
+% Margin notes
+\setlength{\marginparpush}{\baselineskip}% space between successive notes
+\setlength{\marginparsep}{3mm}%            distance from main text
+\setlength{\marginparwidth}{20mm}%         width of note
+
+% Paragraph spacing / indentation
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\parskipsaved}
+
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+% My Stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{epstopdf}
+
+% title, author and date
+\title{VBF QCD Samples Feasibility Study for Run II} 
+\author{Joao Pela\\
+ Imperial College London\\
+   \texttt{joao.pela@cern.ch}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Study on the feasibility of QCD samples with VBF characteristics
+\end{abstract}
+
+\section{Introduction}
+
+During the preparation the VBF Higgs to invisible run I analysis a set of QCD samples with VBF like jets and real MET was generated. This samples allowed to understand the mechanisms that create real MET in QCD and how those could be mitigated. 
+
+The VBF Higgs to invisible analysis is now preparing for Run II it was considered once again to be useful to have similar samples remade and possibly extended. It was identified that not only real MET is significant but also fake MET coming from detector miss measurement and as such a sample that could simulate such effects would be of great interest.
+
+This study investigates the alternatives and attempts to quantify the costs of of producing such samples.
+
+\section{Objectives and methods}
+
+The objective of this study is to identify and 
+
+\section{Run I VBF QCD samples characteristics}
+
+To be done
+
+\section{Cross section}
+
+Here is a table summarizing the cross section for each QCD $p_\perp$ hat.
+
+\input{tables/table_CrossSections_QCD.tex}
+
+\section{Phys14 QCD samples}
+
+Before we start investigating possible production filters we need to define a baseline production. For this purpose, the Phys14 samples were chosen since this production was fairly recent and this samples were tested in a CMS wide exercise. Some details about this samples can be found in the table \ref{table_QCD_Phys14DR_SampleDetails}.
+
+\input{tables/table_QCD_Phys14DR_SampleDetails.tex}
+
+This samples were produced with CMSSW\_7\_2\_0\_patch1. We will be using the same version for this study since any produced test samples can be tested with the same receipts used to analyse Phys14 samples.
+
+Unfortunately, it was found that this QCD samples were not created from scratch. They are simply a reprocessing of previously produced samples produce in the Fall13 campaign with CMSSW\_6\_2\_0\_patch1. This means we cannot simply use the same configuration files used to produce Phys14 samples since this will not run any Monte Carlo generator but only re-process existing samples.  
+
+\section{Producing unfiltered events}
+
+In order the understand the time cost of simulating events from scratch with CMSSW\_7\_2\_0\_patch1 configuration files were prepared 
+
+\newpage
+\appendix
+
+\section{Code}
+\lstset{
+  language=bash,
+  basicstyle=\footnotesize, 
+  breaklines=true
+}
+\begin{lstlisting}
+cmsDriver.py Configuration/GenProduction/python/BTV-Fall13-00042-fragment.py 
+  --mc 
+  --fileout file:QCD_Pt-30to50_step1.root 
+  --eventcontent RAWSIM 
+  --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/StandardSequences/SimWithCastor_cff.customise 
+  --datatier GEN-SIM-RAW 
+  --pileup_input "dbs:/MinBias_TuneA2MB_13TeV-pythia8/Fall13-POSTLS162_V1-v1/GEN-SIM" 
+  --pileup 'AVE_35_BX_50ns,{"N":30}' 
+  --conditions PHYS14_ST_V1 
+  --step GEN,SIM,DIGI,L1,DIGI2RAW,HLT:GRun 
+  --magField 38T_PostLS1 
+  --geometry Extended2015 
+  --python_filename QCD_Pt-30to50_step1_cfg.py 
+  --no_exec 
+  -n 100
+\end{lstlisting}
+
+\newpage
+\begin{thebibliography}{10}
+
+\bibitem{FirstReference}
+
+\end{thebibliography}
+
+\end{document}
