@@ -74,9 +74,11 @@
 \usepackage{listings}
 \usepackage[toc,page]{appendix}
 \usepackage{epstopdf}
+\usepackage{framed}  % Boxes around stuff
+\usepackage{siunitx} % Allows easy x10^ for numbers
 
 % title, author and date
-\title{VBF QCD Samples Feasibility Study for Run II} 
+\title{QCD Samples with VBF-like jets and MET - Feasibility Study for Run II} 
 \author{Joao Pela\\
  Imperial College London\\
    \texttt{joao.pela@cern.ch}}
@@ -87,30 +89,131 @@
 \maketitle
 
 \begin{abstract}
-Study on the feasibility of QCD samples with VBF characteristics
+Study on the feasibility of QCD samples with VBF-like jets and MET characteristics to be used in the CMS VBF Higgs to Invisible analsysis during the LHC Run II period. This study will cover cost (physics usability, computing and disk storage) of several possibilities to make such samples.
 \end{abstract}
 
 \section{Introduction}
 
-During the preparation the VBF Higgs to invisible run I analysis a set of QCD samples with VBF like jets and real MET was generated. This samples allowed to understand the mechanisms that create real MET in QCD and how those could be mitigated. 
+Simulating and reconstructing quantities of QCD events in quantities comparable to the ones produced at the LHC experiments is impractical. At every second of LHC physics operation 
+several million bunch crossings happen each one containing several collisions. With current hardware it takes in excess of one minute to fully simulate one of such bunch crossings. This constraints lead to QCD events being simulated in $p_\perp$ hats, where the first collision is generated in a specific $p_\perp$ range and then several other collision are added as pile-up. This extra collisions are generated without any constraints in $p_\perp$. 
 
-The VBF Higgs to invisible analysis is now preparing for Run II it was considered once again to be useful to have similar samples remade and possibly extended. It was identified that not only real MET is significant but also fake MET coming from detector miss measurement and as such a sample that could simulate such effects would be of great interest.
+This bin method allows the user to have samples with increasing energy and study the influence of each of them in their own analysis. As a practical example a user does not need to look over millions of events to find high energy jets, he can just test the higher $p_\perp$ hats as needed.
+
+On the other hand, there are some analysis that require jets and/or MET with very low values where this inclusive QCD samples will not have enough statistics to provide insight into the QCD behaviour. The CMS VBF Higgs to invisible is one of such analysis.
+
+During the preparation the Run I VBF Higgs to invisible analysis a set of QCD samples with VBF like jets and real MET was generated. This samples allowed to understand the mechanisms that create real MET in QCD and how those could be mitigated.
+
+The analysis is now preparing for Run II it was considered once again to be useful to have similar samples remade and possibly extended. It was identified that not only real MET is significant but also fake MET coming from detector miss measurement and as such a sample that could simulate such effects would be of great interest.
 
 This study investigates the alternatives and attempts to quantify the costs of of producing such samples.
 
 \section{Objectives and methods}
 
-The objective of this study is to identify and 
+The objective of this study is to identify possible working points for the production of QCD samples with VBF-like jets and MET. 
 
-\section{Run I VBF QCD samples characteristics}
+Since this type of events is very rare, we need to filter this events in order to have manageable sample sizes. There are also computing limitations, while running a Monte Carlo generator is not very costly in terms of CPU time, running the full CMS simulation is.
 
-To be done
+Steps where filters can be inserted:
+\begin{itemize}
+ \item Monte Carlo Generation
+ \item Level 1 Trigger
+ \item High Level Trigger
+ \item Offline
+\end{itemize}
+
+To maximise physics usability of this samples the one should consider:
+\begin{itemize}
+  \item Avoid any cut on generator level MET, in order to pick up fake MET events.
+  \item Samples should be of similar size to the inclusive QCD samples
+  \item $\Delta\phi(jet-jet)$ cuts should be avoided since the Run I analysis uses inverted cuts in this variable on a data-driven QCD estimation.
+\end{itemize}
 
 \section{Cross section}
 
-Here is a table summarizing the cross section for each QCD $p_\perp$ hat.
+The cross section for each QCD $p_\perp$ hat at 
 
 \input{tables/table_CrossSections_QCD.tex}
+
+As expected the cross section increase significantly from 8 TeV to 13 TeV and this effect becomes more and more significant as you go up in $p_\perp$ hat.
+
+\input{tables/table_QCD_RunII_EventsIntegratedLuminsity}
+
+\section{Run I VBF QCD samples characteristics}
+
+In the section we will summarize the characteristics of VBF QCD samples produced for the Run I analysis.
+
+Two filters were applied to data, one over the generator level met and another over generator level jets. Here, generator level MET is defined as the vectorial sum of the $p_\perp$ of all neutrinos on the event. The implemented filters selected events according to the following characteristics:
+
+MC Filter: Vectorial sum of neutrino $E_T$
+\begin{itemize}
+  \item $\sum E_\perp(\vec{\nu}) > 40$ $GeV$
+\end{itemize}
+
+MC Filter: Dijet Filter
+\begin{itemize}
+  \item Select jets with:
+  \begin{itemize}
+    \item $p_\perp>20$ $GeV$
+    \item $|\eta|<5.0$
+  \end{itemize}
+  \item From selected jets at least one pair with:
+  \begin{itemize}
+    \item $m_{jj}>700$ $GeV$
+    \item $\Delta\eta>3.2$
+  \end{itemize}    
+\end{itemize}
+
+By applying this filters we were able to pass only a small fraction of the events to the detector simulation.
+
+\begin{table}
+\centering
+
+\begin{tabular}{|c|r|c|r|c|c|}
+\hline
+$p_\perp$ Hat & Ev. Gen. & Filter Eff. &  Events &  XS $[pb]$ & Eq. Lumi. $[fb^{-1}]$ \\
+\hline \hline
+80-120  & 39376000000 &    0.000049 & 1614416 &  1033680 &  38.09 \\
+120-170 &  7000000000 &    0.000283 & 2051000 & 156293.3 &  44.79 \\
+170-300 &  1375000000 &    0.000987 & 1391500 & 34138.15 &  40.28 \\
+300-470 &    80000000 &    0.002659 &  207840 & 1759.549 &  45.47 \\
+470-600 &    25000000 &    0.004127 &  104675 & 113.8791 & 219.53 \\
+\hline
+\end{tabular}
+
+\caption{TODO}
+\label{table_RunI_QCDFiltered_FilterEff}
+\end{table}
+
+The resulting samples were publish in the CMS physics analysis database with url:
+
+\begin{center}
+https://cmsdbsprod.cern.ch:8443/cms\_dbs\_ph\_analysis\_01\_writer/servlet/DBSServlet
+\end{center}
+
+With the following database names:
+ 
+\begin{table}
+\centering
+ 
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c|l|}
+\hline
+$p_\perp$ hat & Identifier \\
+\hline \hline
+80-120  & /VBFQCD\_Pt\_80to120\_MET40\_step1\_v1/pela-VBFQCD\_Pt\_80to120\_MET40\_step3\_v1-3664d28163503ca8171ba37083c39fc9/USER \\
+120-170 & /VBFQCD\_Pt\_120to170\_MET40\_step1\_v1/pela-VBFQCD\_Pt\_120to170\_MET40\_step3\_v1-3664d28163503ca8171ba37083c39fc9/USER \\
+170-300 & /VBFQCD\_Pt\_170to300\_MET40\_step1\_v1/pela-VBFQCD\_Pt\_170to300\_MET40\_step3\_v1-3664d28163503ca8171ba37083c39fc9/USER \\
+300-470 & /VBFQCD\_Pt\_300to470\_MET40\_step1\_v1/pela-VBFQCD\_Pt\_470to600\_MET40\_step3\_v1-3664d28163503ca8171ba37083c39fc9/USER \\
+470-600 & /VBFQCD\_Pt\_470to600\_MET40\_step1\_v1/pela-VBFQCD\_Pt\_470to600\_MET40\_step3\_v2-3664d28163503ca8171ba37083c39fc9/USER \\
+\hline
+\end{tabular}
+}
+
+\caption{TODO}
+\label{table_RunI_QCDFiltered_SampleNames}
+\end{table}
+
+
 
 \section{Phys14 QCD samples}
 
@@ -122,19 +225,113 @@ This samples were produced with CMSSW\_7\_2\_0\_patch1. We will be using the sam
 
 Unfortunately, it was found that this QCD samples were not created from scratch. They are simply a reprocessing of previously produced samples produce in the Fall13 campaign with CMSSW\_6\_2\_0\_patch1. This means we cannot simply use the same configuration files used to produce Phys14 samples since this will not run any Monte Carlo generator but only re-process existing samples.  
 
+\section{QCD pT hat characteristics}
+
+% Plots need relooking
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Jet0_Pt.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Jet1_Pt.pdf}
+\end{minipage}
+
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Jets_Multiplicity.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Dijet_MaxMjj.pdf}
+\end{minipage}
+
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Dijet_MaxDEta.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{img/Dijet_MinDPhi.pdf}
+\end{minipage}
+
+
 \section{Producing unfiltered events}
 
-In order the understand the time cost of simulating events from scratch with CMSSW\_7\_2\_0\_patch1 configuration files were prepared 
+In order the understand the time cost of simulating events from scratch with CMSSW\_7\_2\_0\_patch1 configuration files were prepared using for each $p_\perp$ hat TODO
+l
+\input{tables/table_QCD_ProdUnfiltered_Hardware.tex}
+
+It should be noted th
+
+\input{tables/table_QCD_ProdUnfiltered_Step1.tex}
+\input{tables/table_QCD_ProdUnfiltered_Step2.tex}
+
+\section{Generator level filters}
+
+Two generator level filters were developed to preform this studies/productions. They filtered event on the generator jets and MET.
+
+\subsection{Generator Jets Filter}
+
+TODO: Description of the generator jet filter
+
+\subsection{Generator MET Filter}
+
+TODO: Description of the generator MET filter 
 
 \newpage
 \appendix
+\section{Code Setup}
 
-\section{Code}
+To reproduce this study you need to create a new CMSSW area, clone the git repository and get some configuration files from a remote server. To do this issue the following commands in a lxplus (SLC6) bash terminal:
+
 \lstset{
   language=bash,
   basicstyle=\footnotesize, 
   breaklines=true
 }
+\begin{framed}
+\begin{lstlisting}
+cmsrel CMSSW_7_2_0_patch1
+cd CMSSW_7_2_0_patch1/src/
+cmsenv
+git clone git@github.com:joaopela/VBFHiggsToInvisible.git
+git checkout !!!TODO!!! <tag>
+./VBFHiggsToInvisible/SampleProduction/scripts/getConfigFiles.sh
+scramv1 b -j 5
+\end{lstlisting}
+\end{framed}
+
+The configuration files are located at:
+
+\begin{framed}
+\begin{lstlisting}
+VBFHiggsToInvisible/SampleProduction/test/13TeV/VBFQCD/
+\end{lstlisting}
+\end{framed}
+
+\newpage
+\section{Code Simulation}
+
+Below the cmsDriver.py code to generate the CMSSW configuration files to generate unfiltered QCD samples in the $p_\perp$ hat of 30 to 50 GeV. This generation/simulation has been made over two steps. 
+
+Step one comprises:
+\begin{itemize}
+  \item GEN: Actual physics process simulation
+  \item SIM: Geant simulation of the intereaction of particles with the detector
+  \item DIGI: Simulation of the response of CMS electronics
+  \item L1: Simulation of the Level 1 Trigger
+  \item DIGI2RAW: Conversion of the Digital Signal back to ``raw'' signal
+  \item HLT:GRun: High Level Trigger Simulation
+\end{itemize}
+
+
+\lstset{
+  language=bash,
+  basicstyle=\footnotesize, 
+  breaklines=true
+}
+\begin{framed}
 \begin{lstlisting}
 cmsDriver.py Configuration/GenProduction/python/BTV-Fall13-00042-fragment.py 
   --mc 
@@ -152,6 +349,32 @@ cmsDriver.py Configuration/GenProduction/python/BTV-Fall13-00042-fragment.py
   --no_exec 
   -n 100
 \end{lstlisting}
+\end{framed}
+
+Step one comprises:
+\begin{itemize}
+  \item RAW2DIGI: Simulation of RAW to DIGI process
+  \item L1Reco: Reconstruction of Level 1 trigger quantities
+  \item RECO: Reconstruction of the event
+\end{itemize}
+
+\begin{framed}
+\begin{lstlisting}
+cmsDriver.py step2 
+  --mc 
+  --filein file:QCD_Pt-30to50_step1.root 
+  --fileout file:QCD_Pt-30to50_step2.root 
+  --eventcontent AODSIM 
+  --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring 
+  --datatier AODSIM 
+  --conditions PHYS14_ST_V1 
+  --step RAW2DIGI,L1Reco,RECO 
+  --magField 38T_PostLS1 
+  --python_filename QCD_Pt-30to50_step2_cfg.py 
+  --no_exec 
+  -n 100
+\end{lstlisting}
+\end{framed}
 
 \newpage
 \begin{thebibliography}{10}
