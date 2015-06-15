@@ -1,0 +1,41 @@
+\resizebox{0.8\linewidth}{!}{
+\begin{tabular}{|c|c|c|c|c||c|c||c|c|c|l|}
+\hline
+\multicolumn{5}{|c||}{} & \multicolumn{5}{c|}{Expected times for 10 $fb^{-1}$} & \\
+\hline
+\multicolumn{5}{|c||}{Filter Cuts} & \multicolumn{2}{c||}{CPU Times} & \multicolumn{3}{c|}{HS06 Times} & \\
+\hline
+$p_\perp$ & $|\eta|$ & $\Delta\eta$ & $\Delta\phi$ & $m_{jj}$ & Time (s) & Time 5k (d) & Time (s) & Time 5k (d) & CERN 5k (d) & Notes \\
+\hline\hline
+20 & 5.0 & 3.2  & -    & 700  & \num{4.25E+12} &    9848.75 & \num{1.80E+13} &    \num{4.17E+04} & 7031.31 & Same as Run I without Generator MET \\
+\hline\hline
+40 & 4.8 & 3.5  & -    & 600  & \num{1.28E+12} &    2971.97 & \num{5.63E+12} &    \num{1.30E+04} & 2195.87 & Same as new HLT path \\
+40 & 4.8 & 3.5  & 1.5  & 600  & \num{1.87E+11} &    432.12  & \num{8.45E+11} &    \num{1.96E+03} & 329.54  & Same as new HLT path + $\Delta\phi$ \\
+\hline\hline
+50 & 4.8 & 3.5  & 1.5  & 1000 & \num{3.12E+10} &    72.25   & \num{1.49E+11} &    \num{3.45E+02} & 58.13   & Working point A \\
+45 & 4.8 & 3.5  & 1.5  & 1000 & \num{4.60E+10} &    106.44  & \num{2.14E+11} &    \num{4.95E+02} & 83.48   & WP A: Lower 5 GeV Dijet $p_\perp$\\
+40 & 4.8 & 3.5  & 1.5  & 1000 & \num{7.06E+10} &    163.46  & \num{3.21E+11} &    \num{7.42E+02} & 125.09  & WP A: Lower 10 GeV Dijet $p_\perp$\\
+\hline\hline
+50 & 4.8 & 3.25 & 1.5  & 1000 & \num{3.13E+10} &    72.50   & \num{1.50E+11} &    \num{3.46E+02} & 58.35   & WP A: Lower 0.25 $\Delta\eta$ \\
+50 & 4.8 & 3.0  & 1.5  & 1000 & \num{3.14E+10} &    72.63   & \num{1.50E+11} &    \num{3.47E+02} & 58.48   & WP A: Lower 0.50 $\Delta\eta$ \\
+\hline\hline
+50 & 4.8 & 3.5  & 1.5  & 900  & \num{3.93E+10} &    90.90   & \num{1.87E+11} &    \num{4.33E+02} & 73.00   & WP A: Lower 100 $m_{jj}$ \\
+50 & 4.8 & 3.5  & 1.5  & 800  & \num{4.93E+10} &    114.15  & \num{2.35E+11} &    \num{5.44E+02} & 91.67   & WP A: Lower 200 $m_{jj}$ \\
+50 & 4.8 & 3.5  & 1.5  & 700  & \num{6.28E+10} &    145.40  & \num{2.99E+11} &    \num{6.92E+02} & 116.62  & WP A: Lower 300 $m_{jj}$ \\
+50 & 4.8 & 3.5  & 1.5  & 600  & \num{8.11E+10} &    187.67  & \num{3.84E+11} &    \num{8.90E+02} & 150.02  & WP A: Lower 400 $m_{jj}$ \\
+50 & 4.8 & 3.5  & 1.5  & 500  & \num{1.04E+11} &    241.42  & \num{4.92E+11} &    \num{1.14E+03} & 192.10  & WP A: Lower 500 $m_{jj}$ \\
+50 & 4.8 & 3.5  & 1.5  & 400  & \num{1.29E+11} &    297.85  & \num{6.03E+11} &    \num{1.40E+03} & 235.38  & WP A: Lower 600 $m_{jj}$ \\
+\hline\hline
+50 & 4.8 & 3.5  & 1.75 & 1000 & \num{3.63E+10} &    83.92   & \num{1.73E+11} &    \num{4.00E+02} & 67.44   & WP A: High 0.25 $min(\Delta\phi$) \\
+50 & 4.8 & 3.5  & 2.0  & 1000 & \num{4.28E+10} &    99.05   & \num{2.03E+11} &    \num{4.71E+02} & 79.34   & WP A: High 0.5 $min(\Delta\phi$) \\
+50 & 4.8 & 3.5  & 2.25 & 1000 & \num{5.14E+10} &    119.01  & \num{2.43E+11} &    \num{5.63E+02} & 94.88   & WP A: High 0.75 $min(\Delta\phi$) \\
+50 & 4.8 & 3.5  & 2.5  & 1000 & \num{6.52E+10} &    150.91  & \num{3.06E+11} &    \num{7.09E+02} & 119.42  & WP A: High 1.00 $min(\Delta\phi$) \\
+50 & 4.8 & 3.5  & 2.75 & 1000 & \num{6.87E+10} &    158.92  & \num{3.22E+11} &    \num{7.45E+02} & 125.58  & WP A: High 2.25 $min(\Delta\phi$) \\
+50 & 4.8 & 3.5  & -    & 1000 & \num{2.41E+11} &    558.78  & \num{1.11E+12} &    \num{2.57E+03} & 432.66  & WP A: No $min(\Delta\phi$) cut\\
+\hline\hline
+50 & 4.8 & 3.25 & 2.0  & 1000 & \num{4.29E+10} &    99.40   & \num{2.04E+11} &    \num{4.73E+02} & 79.66   & WP A: High 0.5 $min(\Delta\phi$) and Lower 0.25 $\Delta\eta$\\
+50 & 4.8 & 3.0  & 2.0  & 1000 & \num{4.30E+10} &    99.60   & \num{2.05E+11} &    \num{4.74E+02} & 79.84   & Working point B \\
+\hline
+\end{tabular}
+}
+
