@@ -1,0 +1,15 @@
+# Linux files
+.directory
+*.backup
+
+# LaTeX by products
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+
+# LaTeX PDF output
+*.pdf
+
