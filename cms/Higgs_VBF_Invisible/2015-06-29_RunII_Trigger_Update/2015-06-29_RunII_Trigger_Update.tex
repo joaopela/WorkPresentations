@@ -1,0 +1,189 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}  % Allows easy x10^ for numbers
+\usepackage{appendixnumberbeamer}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela}
+\title{Run II - Trigger Update}
+\institute[ICL]{Imperial College London}
+\date{2015-06-29}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction}
+
+\begin{block}
+  
+\begin{itemize}
+  \item We were contacted by Pascal Vanlaer and David Sperka about a rate mismatch at 7E33 with PU20 and bunch separation 25 ns.
+  \item They quoted the following ``official'' numbers for the rate:
+  \begin{itemize}
+    \item HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu80\_v1: $4.77 \pm 0.17$ versus our predicted 0.1
+    \item HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v1: $0.26 \pm 0.01$ versus our predicted 4.5
+  \end{itemize}
+  \item Our prediction were NOT made for this instantaneous luminosity and PU scenario.
+  \item I was asked to reproduce this rates and re-optimised the thresholds and prescales.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Software used}
+  
+With the help of Pascal, David and Jim I eventually got the CMSSW files produced with the latest HLT with characteristics: 
+  
+\begin{block}
+  
+\begin{itemize}
+  \item CMSSW\_7\_4\_5
+  \item HLT\_dev\_CMSSW\_7\_4\_0\_GRun\_V79
+  \item HCAL Methods 0 and 3.
+\end{itemize}
+ 
+  
+\end{block}
+
+For now just using QCD (which is dominant) for rate calculation.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Example: HCAL Method 0 - HLT\_PFMET170\_NoiseCleaned\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod0_HLT_PFMET170_NoiseCleaned_v2}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Conclusions}
+ 
+\begin{itemize}
+  \item All the rates I obtained are for *\_v2 of this paths while from TSG they are all *\_v1 I am unsure of what changed.
+  \item The rates obtained for HLT\_PFMET170\_NoiseCleaned\_v2 
+  \begin{itemize}
+    \item HCAL Method 0: 0.397+/-0.025 Hz 
+    \item HCAL Method 3: 0.261+/-0.020 Hz.
+    \item From TSG: 0.37+/-0.02 Hz, which matches well for HCAL Method 0.
+  \end{itemize}
+  \item The rate obtained for HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v2
+  \begin{itemize}
+    \item HCAL Method 0: 0.441+/-0.035 Hz 
+    \item HCAL Method 3: 0.242+/-0.024 Hz
+    \item From TSG: 0.26+/-0.01 Hz, which matches well for HCAL Method 3.
+  \end{itemize}
+  \item The rate obtained for HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu80\_v2
+  \begin{itemize}
+    \item HCAL Method 0: 13.355+/-0.370 Hz (assuming HLT prescale 3 like in like TSG)
+    \item HCAL Method 3: 5.150+/-0.200 Hz (assuming HLT prescale 3 like TSG)
+    \item From  TSG is 4.77+/-0.17 Hz, which matches well for HCAL Method 3.
+  \end{itemize}
+  \item Signal efficiency (mH=125 GeV) for HLT\_PFMET170\_NoiseCleaned\_v2 + HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v2 is:
+  \begin{itemize}
+    \item HCAL Method 0: 10.60\% here the dedicate HLT path added an additional 17.85\% of signal
+    \item HCAL Method 3: 9.40\% here the dedicate HLT path added an additional 17.96\% of signal
+  \end{itemize}
+  \item HCAL Method 3 reduces rate versus HCAL Method 0
+  \begin{itemize}
+    \item HLT\_PFMET170\_NoiseCleaned\_v2: -34\%
+    \item HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v2: -45\%
+    \item HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu80\_v2: -61\%
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Have not the capability to obtain rates and efficiencies with the latest HLT code
+  \item Efficiencies look reasonable but can be improved. 
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next steps:}
+ 
+\begin{itemize}
+  \item Was asked to look at more recent samples with better QCD modelling and re-optimize. 
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\appendix
+% ###################################################
+\begin{frame}
+ 
+\begin{block}
+
+\begin{center}Backup Slides\end{center}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{HCAL Method 0 - HLT\_PFMET170\_NoiseCleaned\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod0_HLT_PFMET170_NoiseCleaned_v2}
+
+\end{frame}
+
+\begin{frame}{HCAL Method 0 - HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod0_HLT_DiPFJet40_DEta3p5_MJJ600_PFMETNoMu140_v2}
+
+\end{frame}
+
+\begin{frame}{HCAL Method 0 - HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu80\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod0_HLT_DiPFJet40_DEta3p5_MJJ600_PFMETNoMu80_v2}
+
+\end{frame}
+
+\begin{frame}{HCAL Method 3 - HLT\_PFMET170\_NoiseCleaned\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod3_HLT_PFMET170_NoiseCleaned_v2}
+
+\end{frame}
+
+\begin{frame}{HCAL Method3 - HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu140\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod3_HLT_DiPFJet40_DEta3p5_MJJ600_PFMETNoMu140_v2}
+
+\end{frame}
+
+\begin{frame}{HCAL Method 3 - HLT\_DiPFJet40\_DEta3p5\_MJJ600\_PFMETNoMu80\_v2}
+
+\input{tbl/table_RunII_HLT_dev_CMSSW_7_4_0_GRun_V79_HCALMethod3_HLT_DiPFJet40_DEta3p5_MJJ600_PFMETNoMu80_v2}
+
+\end{frame}
+
+\end{document}
