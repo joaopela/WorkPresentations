@@ -80,7 +80,7 @@ This is not ideal because fake MET is important in our signal region
 \begin{frame}{Proposal}
 
 We propose to generate samples of QCD with:
-\begin{block}
+\begin{block}{Filters}
 
 \begin{itemize}
   \item Filter \#1: VBF jet selection at GEN level
@@ -128,19 +128,20 @@ For this study it was assumed reasonable for full production:
 % ###################################################
 \begin{frame}{Expected QCD events}
 
-In order to determine which $p_\perp$ we would need to generate see what are Phys14 equivalent luminosities.
+In order to determine which $p_\perp$ hats we would need to generate we calculate what are Phys14 QCD MC equivalent luminosities.
 
-\begin{block}{Expected events per $p_\perp$ for Phys14 samples}
+\begin{block}{Equivalent luminosity per $p_\perp$ hat for Phys14 samples}
 
 \input{tables/table_QCD_Phys14_EquivalentLumi.tex}
 
 \end{block}
 
-\begin{block}{$p_\perp$ to simulate}
+\begin{block}{Minimum $p_\perp$ hat to simulate}
 
 \begin{itemize}
   \item For 10 $fb^-1$ we need to simulate up to bin 470-600
   \item For 30 $fb^-1$ we need to simulate up to bin 800-1000
+  \item Above this $p_\perp$ hats we can use the QCD inclusive samples since they have enough equivalent luminosity.
 \end{itemize}
 
 \end{block}
@@ -149,7 +150,9 @@ In order to determine which $p_\perp$ we would need to generate see what are Phy
 
 % ###################################################
 \begin{frame}{Generator filter working points}
-  
+
+The generator level filter will select events with at least a pair of generator jets (ak4) passing a set of cuts.
+
 \begin{block}{Generator Level Filter Statistics}
 
   \centering
