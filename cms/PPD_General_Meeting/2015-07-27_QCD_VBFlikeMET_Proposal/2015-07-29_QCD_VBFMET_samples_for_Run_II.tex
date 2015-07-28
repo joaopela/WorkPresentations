@@ -76,13 +76,217 @@ This is not ideal because fake MET is important in our signal region
 
 \end{frame}
 
-
 % ###################################################
 \begin{frame}{Proposal}
 
-We propose to generate a sample of QCD with VBF jet selection at GEN level, MET applied after digitisation (which practically speaking means making a requirement at L1 trigger level)
+We propose to generate samples of QCD with:
+\begin{block}
+
+\begin{itemize}
+  \item Filter \#1: VBF jet selection at GEN level
+  \item Filter \#2: MET applied after digitisation (implemented as a L1 MET cut)
+\end{itemize}
+  
+\end{block}
+
+By carefully tuning the cuts at each filter we could:
+\begin{block}{Advantages:}
+
+\begin{itemize}
+  \item Produce a QCD sample with high equivalent integrated luminosity (several $fb^{-1}$)
+  \item Generation cuts below trigger/offline analysis cuts 
+  \item Able to simulate both real QCD MET and fake/mismeasured MET
+  \item If well understood possibility of using for MVA training
+\end{itemize}
+
+\end{block}
 
 \end{frame}
+
+\begin{frame}{Assumptions and Questions}
+  
+\begin{block}{Assumptions}
+
+For this study it was assumed reasonable for full production: 
+
+\begin{itemize}
+  \item 5000 CPU for up to 2-3 months (60 to 90 days)
+  \begin{itemize}
+    \item Is this a reasonable amount of computing power? If not which should be targeted? 
+  \end{itemize}
+  \item For an equivalent integrated luminosity of 10 $fb^-1$
+  \begin{itemize}
+    \item If the computing requirements resources are too high a smaller equivalent luminosity sample could be made. 
+  \end{itemize}
+  \item The sample final size should be comparable to current produced samples
+\end{itemize}
+
+\end{block}
+  
+\end{frame}
+
+% ###################################################
+\begin{frame}{Expected QCD events}
+
+In order to determine which $p_\perp$ we would need to generate see what are Phys14 equivalent luminosities.
+
+\begin{block}{Expected events per $p_\perp$ for Phys14 samples}
+
+\input{tables/table_QCD_Phys14_EquivalentLumi.tex}
+
+\end{block}
+
+\begin{block}{$p_\perp$ to simulate}
+
+\begin{itemize}
+  \item For 10 $fb^-1$ we need to simulate up to bin 470-600
+  \item For 30 $fb^-1$ we need to simulate up to bin 800-1000
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Generator filter working points}
+  
+\begin{block}{Generator Level Filter Statistics}
+
+  \centering
+  \input{tbl/table_GenFilter_Summary2}
+  
+\end{block}
+
+\begin{itemize}
+  \item All times are HS06 normalized (to reduce extrapolation error)
+  \item Working Point A: Lowering $p_\perp$ even by 5 GeV increases processing time prohibitively 
+  \item Working Point A: Lowering $\Delta\eta$ cut makes almost no differences
+  \item Working Point A: For each 100 GeV drop of $m_{jj}$ will cost of at least 20 additional days. 
+  \item Increasing $min(\Delta\phi)$ to 2.0 and decreasing $\Delta\eta$ to 3.0 is acceptable (Working point B)
+\end{itemize}
+  
+\end{frame}
+
+% ###################################################
+\begin{frame}{Post DIGI filter working points}
+
+For working point B ($p_\perp>40$, $|eta|<4.75$, $\Delta_{\eta}>3.0$, $\Delta_{\phi}<2.0$, $m_{jj}>1000$)
+
+\begin{block}{Level 1 Cut}
+
+  \centering
+  \input{tbl/table_Events_EquiLumi10fb}
+  
+\end{block}
+
+\begin{itemize}
+  \item Sample would have around 80-200M events for 10 $fb^{-1}$ depending on L1 cut with this generator filter configuration
+  \begin{itemize}
+    \item What would be an acceptable upper limit to the samples size?
+  \end{itemize}
+  \item The preferred working point would be $L1_{ETM}\geq60$ or lower if possible.
+\end{itemize}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Technical requirements}
+
+If our proposal is accepted some technical requirements need to be fulfilled before central production can be started: 
+
+\begin{block}{Requirements}
+    
+\begin{itemize}
+  \item The generator dijet filter needs to be included in the CMSSW release.
+  \begin{itemize} 
+    \item Which version to target?
+  \end{itemize}
+  \item The post-DIGI filter needs to be included in the CMSSW release.
+  \begin{itemize} 
+    \item To what package?
+  \end{itemize}
+  \item cmsDriver needs to be updated to allow the inclusion of filters after DIGI.
+\end{itemize}
+    
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item A proposal of QCD samples with VBF jets and MET was presented.
+  \item These samples would allow in depth study of QCD in the signal region of our analysis.
+  \item To produce such samples some technical changes would be required.
+  \item If produced this would be the first samples made with offline cuts in CMS.
+  \item Would allow direct study of fake met due to miss measurement at high integrated luminosity for the first time.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\appendix
+% ###################################################
+\begin{frame}
+ 
+\begin{block}
+
+\begin{center}Backup Slides\end{center}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Run I QCD VBF Jets+MET samples}
+
+As a reminder here are the generator cuts used to generate the run I QCD samples.
+
+\begin{block}{MC Filter: Vectorial sum of neutrino $E_T$}
+
+\begin{itemize}
+  \item $\sum E_\perp(\vec{\nu}) > 40$ $GeV$
+\end{itemize}
+
+\end{block}
+
+\begin{block}{MC Filter: Dijet Filter (AK5 GenJet no $\mu$)}
+
+\begin{itemize}
+  \item Select jets with:
+  \begin{itemize}
+    \item $p_\perp>20$ $GeV$
+    \item $|\eta|<5.0$
+  \end{itemize}
+  \item From selected jets at least one pair with:
+  \begin{itemize}
+    \item $m_{jj}>700$ $GeV$
+    \item $\Delta\eta>3.2$
+  \end{itemize}    
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Cross Sections}
+
+\begin{block}{Cross Section for some QCD $p_\perp$ hats}
+  
+\input{tables/table_CrossSections_QCD.tex}
+
+\end{block}
+  
+As expected cross section for the this QCD $p_\perp$ hats increase significantly from 8 to 13 TeV.
+  
+\end{frame}
+
 
 % ###################################################
 \begin{frame}{Unfiltered production: Hardware}
@@ -198,111 +402,6 @@ Some conclusions
   \item Lowering $\Delta\eta$ cut makes almost no differences
   \item For each 100 GeV drop of $m_{jj}$ will cost of at least 20 additional days. 
   \item Increasing $min(\Delta\phi)$ to 2.0 and decreasing $\Delta\eta$ to 3.0 is acceptable (Working point B)
-\end{itemize}
-
-\end{frame}
-
-% ###################################################
-\begin{frame}{Offline Filter Efficiency}
-
-For working point $p_\perp>40$, $|eta|<4.75$, $\Delta_{\eta}>3.0$, $\Delta_{\phi}<2.0$, $m_{jj}>1000$ 
-
-\begin{block}{Level 1 Cut}
-
-  \centering
-  \input{tbl/table_Events_EquiLumi10fb}
-  
-\end{block}
-
-\begin{itemize}
-  \item Bug on $p_\perp>40$, $|eta|<4.75$ currently re-running (preliminary processing sees 10x less events in 30-50 bin)
-  \item Sample would have around 115-170M events depending on L1 cut with this generator filter configuration
-\end{itemize}
-
-\end{frame}
-
-% ###################################################
-\begin{frame}{Summary}
- 
-\begin{block}{Summary:}
- 
-\begin{itemize}
-  \item Found a working point with is feasible with no MET cut at generator level with the caveat that it has a delta phi cut.
-  \item A document including all the information is being written and will be sent around soon.
-\end{itemize}
-
-\end{block}
-
-\begin{block}{Next steps:}
- 
-\begin{itemize}
-  \item Finish offline efficiency study
-\end{itemize}
-
-\end{block}
-
-\end{frame}
-
-% ###################################################
-\appendix
-% ###################################################
-\begin{frame}{Run I QCD VBF Jets+MET samples}
-
-As a reminder here are the generator cuts used to generate the run I QCD samples.
-
-\begin{block}{MC Filter: Vectorial sum of neutrino $E_T$}
-
-\begin{itemize}
-  \item $\sum E_\perp(\vec{\nu}) > 40$ $GeV$
-\end{itemize}
-
-\end{block}
-
-\begin{block}{MC Filter: Dijet Filter (AK5 GenJet no $\mu$)}
-
-\begin{itemize}
-  \item Select jets with:
-  \begin{itemize}
-    \item $p_\perp>20$ $GeV$
-    \item $|\eta|<5.0$
-  \end{itemize}
-  \item From selected jets at least one pair with:
-  \begin{itemize}
-    \item $m_{jj}>700$ $GeV$
-    \item $\Delta\eta>3.2$
-  \end{itemize}    
-\end{itemize}
-
-\end{block}
-
-\end{frame}
-
-% ###################################################
-\begin{frame}{Cross Sections}
-
-\begin{block}{Cross Section for some QCD $p_\perp$ hats}
-  
-\input{tables/table_CrossSections_QCD.tex}
-
-\end{block}
-  
-As expected cross section for the this QCD $p_\perp$ hats increase significantly from 8 to 13 TeV.
-  
-\end{frame}
-
-% ###################################################
-\begin{frame}{Events for 10 and 30 $fb^-1$}
-
-\begin{block}
-
-\input{tables/table_QCD_RunII_EventsIntegratedLuminsity.tex}
-
-\end{block}
-  
-Knowing that the current QCD samples sizes (470-600: 2.9M and 600-800: 2.8M) we can conclude:
-\begin{itemize}
-  \item For 10 $fb^-1$ we need to simulate up to bin 470-600
-  \item For 30 $fb^-1$ we need to simulate up to bin 600-800
 \end{itemize}
 
 \end{frame}
