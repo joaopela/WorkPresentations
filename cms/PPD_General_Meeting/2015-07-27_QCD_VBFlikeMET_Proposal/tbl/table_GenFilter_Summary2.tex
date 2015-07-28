@@ -1,19 +1,19 @@
 \resizebox{0.8\linewidth}{!}{
-\begin{tabular}{|l||c|c|c|c|c||c|c|}
+\begin{tabular}{|l||c|c|c|c|c||c||c|c|}
 \hline
- & \multicolumn{5}{c||}{} & \multicolumn{2}{c|}{Expected times for 10 $fb^{-1}$} \\
+ & \multicolumn{5}{c||}{} & \multicolumn{3}{c|}{Expected times for 10 $fb^{-1}$} \\
 \hline
- & \multicolumn{5}{c||}{Filter Cuts} & \multicolumn{2}{c|}{CPU Times} \\
+ & \multicolumn{5}{c||}{Filter Cuts} & Events & \multicolumn{2}{c|}{CPU Times} \\
 \hline
-Selection & $p_\perp$ & $|\eta|$ & $\Delta\eta$ & $\Delta\phi$ & $m_{jj}$ & HS06 CPU (s) & 5k CPU (d) \\
+Selection & $p_\perp$ & $|\eta|$ & $\Delta\eta$ & $\Delta\phi$ & $m_{jj}$ & Pass & HS06 CPU (s) & 5k CPU (d) \\
 \hline\hline
-Same as Run I without Generator MET  & 20 & 5.0 & 3.2  & -    & 700  & \num{1.80E+13} & 7031.31 \\
+Same as Run I without Generator MET  & 20 & 5.0 & 3.2  & -    & 700  & \num{3.98E+10} & \num{1.80E+13} & 7031.31 \\
 \hline\hline                                              
-Same as new HLT path                 & 40 & 4.8 & 3.5  & -    & 600  & \num{5.63E+12} & 2195.87 \\
-Same as new HLT path + $\Delta\phi$  & 40 & 4.8 & 3.5  & 1.5  & 600  & \num{8.45E+11} & 329.54  \\
+Same as new HLT path                 & 40 & 4.8 & 3.5  & -    & 600  & \num{1.12E+10} & \num{5.63E+12} & 2195.87 \\
+Same as new HLT path + $\Delta\phi$  & 40 & 4.8 & 3.5  & 1.5  & 600  & \num{1.57E+09} & \num{8.45E+11} & 329.54  \\
 \hline\hline                                              
-Working point A                      & 50 & 4.8 & 3.5  & 1.5  & 1000 & \num{1.49E+11} & 58.13   \\
-Working point B                      & 50 & 4.8 & 3.0  & 2.0  & 1000 & \num{2.05E+11} & 79.84   \\
+Working point A                      & 50 & 4.8 & 3.5  & 1.5  & 1000 & \num{2.49E+08} & \num{1.49E+11} & 58.13   \\
+Working point B                      & 50 & 4.8 & 3.0  & 2.0  & 1000 & \num{3.44E+08} & \num{2.05E+11} & 79.84   \\
 \hline
 \end{tabular}
 }
