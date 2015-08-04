@@ -130,7 +130,7 @@ To maximise physics usability of this samples the one should consider:
 
 \section{Cross section}
 
-The cross section for each QCD $p_\perp$ hat at 
+The cross section for each QCD $p_\perp$ hat 
 
 \input{tables/table_CrossSections_QCD.tex}
 
@@ -138,7 +138,22 @@ As expected the cross section increase significantly from 8 TeV to 13 TeV and th
 
 \input{tables/table_QCD_RunII_EventsIntegratedLuminsity}
 
-\section{Run I VBF QCD samples characteristics}
+
+\section{Generator level filters}
+
+Two generator level filters were developed to preform this studies/productions. They filtered event on the generator jets and MET.
+
+\subsection{Generator Jets Filter}
+
+TODO: Description of the generator jet filter
+
+\subsubsection{Generator MET Filter}
+
+TODO: Description of the generator MET filter 
+
+\section{Other relevant samples}
+
+\subsection{Run I VBF QCD samples characteristics}
 
 In the section we will summarize the characteristics of VBF QCD samples produced for the Run I analysis.
 
@@ -214,8 +229,7 @@ $p_\perp$ hat & Identifier \\
 \end{table}
 
 
-
-\section{Phys14 QCD samples}
+\subsection{Phys14 QCD samples}
 
 Before we start investigating possible production filters we need to define a baseline production. For this purpose, the Phys14 samples were chosen since this production was fairly recent and this samples were tested in a CMS wide exercise. Some details about this samples can be found in the table \ref{table_QCD_Phys14DR_SampleDetails}.
 
@@ -225,7 +239,32 @@ This samples were produced with CMSSW\_7\_2\_0\_patch1. We will be using the sam
 
 Unfortunately, it was found that this QCD samples were not created from scratch. They are simply a reprocessing of previously produced samples produce in the Fall13 campaign with CMSSW\_6\_2\_0\_patch1. This means we cannot simply use the same configuration files used to produce Phys14 samples since this will not run any Monte Carlo generator but only re-process existing samples.  
 
-\section{QCD pT hat characteristics}
+
+\section{Run II feasibility study}
+
+\subsection{Software}
+
+For this study we will be using CMSSW\_7\_2\_0\_patch1 since this was the version used for making the Phys14 production campaign. There are clear recipes to produce Monte Carlo for this specific campaign and we will base ourself on them.
+
+There are however relevant changes between the software used to produce the Run I QCD VBF-like + MET sample and this CMSSW version the most relevant ones are:
+\begin{itemize}
+  \item New detector components, trigger system and data acquisition (reflected on the simulation).
+  \item Different Monte Carlos generator: Pythia 8.2 (was pythia 6.4) %TODO: Check this
+  \item Different jet cone size: anti-kt 0.4 (was 0.5)
+\end{itemize}
+
+\subsection{Unfiltered events}
+
+In order the understand the time cost of simulating events from scratch with CMSSW\_7\_2\_0\_patch1 configuration files were prepared using for each $p_\perp$ hat TODO
+l
+\input{tables/table_QCD_ProdUnfiltered_Hardware.tex}
+
+It should be noted th
+
+\input{tables/table_QCD_ProdUnfiltered_Step1.tex}
+\input{tables/table_QCD_ProdUnfiltered_Step2.tex}
+
+\subsubsection{Key variables}
 
 % Plots need relooking
 \begin{minipage}{.5\textwidth}
@@ -254,30 +293,6 @@ Unfortunately, it was found that this QCD samples were not created from scratch.
   \centering
   \includegraphics[width=1.0\linewidth]{img/Dijet_MinDPhi.pdf}
 \end{minipage}
-
-
-\section{Producing unfiltered events}
-
-In order the understand the time cost of simulating events from scratch with CMSSW\_7\_2\_0\_patch1 configuration files were prepared using for each $p_\perp$ hat TODO
-l
-\input{tables/table_QCD_ProdUnfiltered_Hardware.tex}
-
-It should be noted th
-
-\input{tables/table_QCD_ProdUnfiltered_Step1.tex}
-\input{tables/table_QCD_ProdUnfiltered_Step2.tex}
-
-\section{Generator level filters}
-
-Two generator level filters were developed to preform this studies/productions. They filtered event on the generator jets and MET.
-
-\subsection{Generator Jets Filter}
-
-TODO: Description of the generator jet filter
-
-\subsection{Generator MET Filter}
-
-TODO: Description of the generator MET filter 
 
 \newpage
 \appendix
