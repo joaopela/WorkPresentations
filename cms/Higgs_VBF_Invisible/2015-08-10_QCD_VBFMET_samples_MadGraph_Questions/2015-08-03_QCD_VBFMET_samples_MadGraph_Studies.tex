@@ -1,0 +1,108 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}  % Allows easy x10^ for numbers
+\usepackage{appendixnumberbeamer}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela}
+\title{QCD VBFMET samples MadGraph Questions}
+\institute[ICL]{Imperial College London}
+\date{2015-08-10}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Mail exchange I}
+
+Since last week I has a couple of conversations with Josh Bendavid and Chayanit in order to settle the open questions presented last week and approach what production does.
+
+\begin{block}{From a mail exchange with Josh}
+
+\begin{itemize}
+  \item \textbf{Question:} Which file events file produced by MadGraph should I use to use to pass to CMSSW: events.lhe.gz or unweighted\_events.lhe.gz?
+  \begin{itemize}
+    \item \textbf{Answer:} unweighted\_events
+  \end{itemize}
+  
+  \item \textbf{Question:} Is the matching efficiency typically Pythia8 matching efficiency? Currently getting around 20\% is that a reasonable number?
+  \begin{itemize}
+    \item \textbf{Answer:} yes that's the matching efficiency and 20\% sounds reasonable
+  \end{itemize}
+  
+  \item \textbf{Question:} What cross section to use after the matching process? Pre or post matching? (I am using Hadronizer\_TuneCUETP8M1\_13TeV\_MLM\_5f\_max4j\_LHE\_pythia8\_cff)
+  \begin{itemize}
+    \item \textbf{Answer:} post-matching efficiency
+  \end{itemize}
+\end{itemize}
+
+\end{block}
+
+This is exactly what I have been doing up to now so all number presented last week are valid (for the used parameters).
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Mail exchange II}
+
+\textbf{Question:} Why did you suggest MadGraph over Pythia8 simulation? If I am not mistaken we can also cut in di-parton mass (with PhaseSpace:mHatMin) and the sum pT of the partons (PhaseSpace:pTHatMin). Are there physics reasons to use MadGraph here? 
+
+\begin{block}{From a mail exchange with Josh}
+
+\begin{itemize}
+  \item Yes the reason I suggested madgraph is that it has more flexible cuts in general out of the box.  (Though both madgraph and pythia also allow the implementation of custom cuts in the hard process as well)
+  \item Madgraph also does allow to include extra jets at the ME level (QCD samples produced for SUSY have 2,3,4 jets at ME level), which may be better since these can also be included in the phase space cuts (ie you can require that any pair of jets satisfy your requirements).  I think if you did it this way you could manage to generate 1 single inclusive sample, without having to break things down in pthat bins.  Maybe you could manage the same in pythia with appropriately chosen hard process cuts.
+\end{itemize}
+
+\end{block}
+
+\begin{itemize}
+  \item \textbf{Question:} I have been exploring the possibility of doing 2,3 and 4 jets. Should I proceed with that study or just 2 jets? 
+  \item One problem is that mmjj fails an event is any jet pair is below mmjj, so for multijet this is not what we want (may need to implement cut in MG grid pack if possible).
+\end{itemize}
+
+Reference: https://answers.launchpad.net/mg5amcnlo/+question/233869
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Comparing default MadGraph with production}
+
+Chayanit has review my dat files and she has noticed that default MadGraph parameter are different than CMS official production.
+
+\begin{block}{Some differences}
+
+\begin{itemize}
+  \item Parameter: MG default - CMSSW
+  \item model: sm - ckm\_no\_b\_mass
+  \item proton def: no b quarks - includes b quarks
+  \item jet def: no b quarks - includes b quarks
+  \item PDF set: nn23lo1 - lhapdf
+  \item maxjetflavor: 4 - 5
+  \item And many more
+\end{itemize}
+
+\end{block}
+
+The problem here is that model ckm\_no\_b\_mass and lhapdf ($lhaid=263000$) are not present in MG 2.3.0. How can I obtain and setup the default software used in CMSSW for event generation?
+
+\end{frame}
+
+\end{document}
