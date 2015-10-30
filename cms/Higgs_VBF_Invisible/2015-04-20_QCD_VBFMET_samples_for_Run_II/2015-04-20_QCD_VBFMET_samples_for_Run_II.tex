@@ -1,0 +1,280 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}  % Allows easy x10^ for numbers
+% \usepackage{appendixnumberbeamer}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela}
+\title{QCD VBF+MET samples for Run2}
+\institute[ICL]{Imperial College London}
+\date{2015-04-20}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction}
+
+During Run I a set of QCD samples with VBF like jets and real MET was generated, which allowed:
+
+\begin{block}
+  
+\begin{itemize}
+  \item Understand real MET in QCD
+  \item Indirectly ``determine the importance`` of fake MET events (which we were not modelling)
+\end{itemize}
+
+\end{block}
+
+For Run II making such samples once again to be useful, but:
+
+\begin{block}
+
+\begin{itemize}
+  \item Is it possible (cross section increase significantly)?
+  \item What are the costs (CPU time and storage)?
+  \item Is it possible to have samples what include fake MET?
+  \item What cuts to apply? And what is the physics toll?
+\end{itemize}
+  
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Run I samples}
+
+As a reminder here are the generator cuts used to generate the run I QCD samples.
+
+\begin{block}{MC Filter: Vectorial sum of neutrino $E_T$}
+
+\begin{itemize}
+  \item $\sum E_\perp(\vec{\nu}) > 40$ $GeV$
+\end{itemize}
+
+\end{block}
+
+\begin{block}{MC Filter: Dijet Filter}
+
+\begin{itemize}
+  \item Select jets with:
+  \begin{itemize}
+    \item $p_\perp>20$ $GeV$
+    \item $|\eta|<5.0$
+  \end{itemize}
+  \item From selected jets at least one pair with:
+  \begin{itemize}
+    \item $m_{jj}>700$ $GeV$
+    \item $\Delta\eta>3.2$
+  \end{itemize}    
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+
+
+% ###################################################
+\begin{frame}{Filters and goals}
+ 
+Steps where filters can (easily...) be inserted:
+
+\begin{block}
+
+\begin{itemize}
+ \item Monte Carlo Generation
+ \item Level 1 Trigger
+ \item High Level Trigger
+ \item Offline
+\end{itemize}
+
+\end{block}
+ 
+Goals for this samples:
+
+\begin{block}
+
+\begin{itemize}
+  \item Avoid: Generator MET cut, (also pick fake MET events).
+  \item Samples should be of similar size to the inclusive QCD samples.
+  \item $\Delta\phi(jet-jet)$ cuts should be avoided if possible (Run I analysis uses $\Delta\phi(jet-jet)$ cut for data-driven QCD estimation).
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Cross Sections}
+
+\begin{block}{Cross Section for some QCD $p_\perp$ hats}
+  
+\input{tables/table_CrossSections_QCD.tex}
+
+\end{block}
+  
+As expected cross section for the this QCD $p_\perp$ hats increase significantly from 8 to 13 TeV.
+  
+\end{frame}
+
+% ###################################################
+\begin{frame}{Events for 10 and 30 $fb^-1$}
+
+\begin{block}
+
+\input{tables/table_QCD_RunII_EventsIntegratedLuminsity.tex}
+
+\end{block}
+  
+Knowing that the current QCD samples sizes (470-600: 2.9M and 600-800: 2.8M) we can conclude:
+\begin{itemize}
+  \item For 10 $fb^-1$ we need to simulate up to bin 470-600
+  \item For 30 $fb^-1$ we need to simulate up to bin 600-800
+\end{itemize}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Unfiltered production: Hardware}
+
+A single job for the whole simulation chain for 100 events was submitted to CERN lxbatch.
+\begin{itemize}
+  \item GEN, SIM, DIGI, L1, DIGI2RAW, HLT:GRun
+  \item RAW2DIGI, L1Reco, RECO
+\end{itemize}
+
+\begin{block}{Hardware characteristics}
+ 
+\input{tables/table_QCD_ProdUnfiltered_Hardware.tex}
+
+\end{block}
+
+To note that at lxplus (which I will assume is representative of the grid resources) machines can be very different in terms of CPU and number of cores. Differences were observed in CPU time between machines executing exactly the same code of +50\% (sometimes as high as +100\%).
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Unfiltered production: Step 1}
+ 
+Here are the statistics for the step 1 computing
+ 
+\begin{block}{Step 1 statistics}
+
+\input{tables/table_QCD_ProdUnfiltered_Step1.tex}
+
+\end{block}
+
+Some conclusions
+\begin{itemize}
+  \item It would be impossible to process every single event, it would take several millennia on a single CPU. We need some kind of gen filter.
+  \item On average events take between 1 and 3 minutes to go over the whole step.
+  \item Event size is under 2 MB (this is normal) and increases with $p_\perp$ hat.
+\end{itemize}
+
+NOTE: I am including PU at average 30 interactions.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Unfiltered production: Step 2}
+ 
+Here are the statistics for the step 2 computing
+ 
+\begin{block}{Step 2 statistics}
+
+\input{tables/table_QCD_ProdUnfiltered_Step2.tex}
+
+\end{block}
+
+Some conclusions
+\begin{itemize}
+  \item This step will not be a problem since it is after the selection
+  \item Event size is under 0.5 MB (this is normal) and increases with $p_\perp$ hat.
+\end{itemize}
+
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First working point}
+
+
+
+\begin{center}
+GenJets only ($p_\perp>50$, $|eta|<4.75$, $\Delta_{\eta}>3.5$, $\Delta_{\phi}<1.5$, $m_{jj}>1000$)
+\end{center}
+
+\begin{block}{Step 1 statistics: 100k events}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||c|c|c|c||c|c|c|}
+\hline
+ & \multicolumn{4}{c||}{CPU Times} &  \\
+\hline
+$p_\perp$ hat & Passed & Filter Eff Event & Total Filter &  Ev Total S1 CPU (s)  & S1 5k CPU (h) & S1 5k CPU (d) \\
+\hline
+\hline
+  30-50 & 2    & 2.00E-05   & 3.23E+07 & 2.39E+09 & 132.69 & 5.53 \\
+  50-80 & 32   & 0.00032    & 7.08E+07 & 7.62E+09 & 423.31 & 17.64 \\
+ 80-120 & 311  & 0.00311    & 9.33E+07 & 1.19E+10 & 660.35 & 27.51 \\
+120-170 & 856  & 0.00855991 & 4.22E+07 & 3.47E+09 & 192.72 & 8.03 \\
+170-300 & 1937 & 0.01937    & 2.33E+07 & 3.37E+09 & 187.40 & 7.81 \\
+300-470 & 3597 & 0.03597    & 2.69E+06 & 3.10E+08 & 17.21  & 0.72 \\
+470-600 & 4676 & 0.0467599  & 2.75E+05 & 3.68E+07 & 2.05   & 0.09 \\
+600-800 & 4806 & 0.04806    & 8.03E+04 & 1.26E+07 & 0.70   & 0.03 \\
+\hline
+\hline
+\end{tabular}
+}
+  
+\end{block}
+
+We could make this samples with 5k CPU in about 2 months, can be done privately with some work, but can be done easily by central production!
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Study is proceeding fast and should be finished next coming days
+  \item Found a working point with is feasible with no MET cut at generator level with the caveat that it has a delta phi cut.
+  \item A document including all the information is being written and will be sent around soon.
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next steps:}
+ 
+\begin{itemize}
+  \item Find optimal working point
+  \item Study Offline cut efficiency
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\end{document}
