@@ -1,0 +1,382 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}  % Allows easy x10^ for numbers
+% \usepackage{appendixnumberbeamer}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela}
+\title{QCD VBF+MET samples for Run2 Update}
+\institute[ICL]{Imperial College London}
+\date{2015-04-27}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction}
+
+During Run I a set of QCD samples with VBF like jets and real MET was generated, which allowed:
+
+\begin{block}
+  
+\begin{itemize}
+  \item Understand real MET in QCD
+  \item Indirectly ``determine the importance`` of fake MET events (which we were not modelling)
+\end{itemize}
+
+\end{block}
+
+For Run II making such samples once again to be useful, but:
+
+\begin{block}
+
+\begin{itemize}
+  \item Is it possible (cross section increase significantly)?
+  \item What are the costs (CPU time and storage)?
+  \item Is it possible to have samples what include fake MET?
+  \item What cuts to apply? And what is the physics toll?
+\end{itemize}
+  
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Run I samples}
+
+As a reminder here are the generator cuts used to generate the run I QCD samples.
+
+\begin{block}{MC Filter: Vectorial sum of neutrino $E_T$}
+
+\begin{itemize}
+  \item $\sum E_\perp(\vec{\nu}) > 40$ $GeV$
+\end{itemize}
+
+\end{block}
+
+\begin{block}{MC Filter: Dijet Filter (AK5 GenJet no $\mu$)}
+
+\begin{itemize}
+  \item Select jets with:
+  \begin{itemize}
+    \item $p_\perp>20$ $GeV$
+    \item $|\eta|<5.0$
+  \end{itemize}
+  \item From selected jets at least one pair with:
+  \begin{itemize}
+    \item $m_{jj}>700$ $GeV$
+    \item $\Delta\eta>3.2$
+  \end{itemize}    
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Filters and goals}
+ 
+Steps where filters can (easily...) be inserted:
+
+\begin{block}
+
+\begin{itemize}
+ \item Monte Carlo Generation
+ \item Level 1 Trigger
+ \item High Level Trigger
+ \item Offline
+\end{itemize}
+
+\end{block}
+ 
+Goals for this samples:
+
+\begin{block}
+
+\begin{itemize}
+  \item Avoid: Generator MET cut, (also pick fake MET events).
+  \item Samples should be of similar size to the inclusive QCD samples.
+  \item $\Delta\phi(jet-jet)$ cuts should be avoided if possible (Run I analysis uses $\Delta\phi(jet-jet)$ cut for data-driven QCD estimation).
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Cross Sections}
+
+\begin{block}{Cross Section for some QCD $p_\perp$ hats}
+  
+\input{tables/table_CrossSections_QCD.tex}
+
+\end{block}
+  
+As expected cross section for the this QCD $p_\perp$ hats increase significantly from 8 to 13 TeV.
+  
+\end{frame}
+
+% ###################################################
+\begin{frame}{Events for 10 and 30 $fb^-1$}
+
+\begin{block}
+
+\input{tables/table_QCD_RunII_EventsIntegratedLuminsity.tex}
+
+\end{block}
+  
+Knowing that the current QCD samples sizes (470-600: 2.9M and 600-800: 2.8M) we can conclude:
+\begin{itemize}
+  \item For 10 $fb^-1$ we need to simulate up to bin 470-600
+  \item For 30 $fb^-1$ we need to simulate up to bin 600-800
+\end{itemize}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Unfiltered production: Hardware}
+
+A single job for the whole simulation chain for 100 events was submitted to CERN lxbatch.
+\begin{itemize}
+  \item GEN, SIM, DIGI, L1, DIGI2RAW, HLT:GRun
+  \item RAW2DIGI, L1Reco, RECO
+\end{itemize}
+
+\begin{block}{Hardware characteristics}
+ 
+\input{tables/table_QCD_ProdUnfiltered_Hardware.tex}
+
+\end{block}
+
+To note that at lxplus (which I will assume is representative of the grid resources) machines can be very different in terms of CPU and number of cores. Differences were observed in CPU time between machines executing exactly the same code of +50\% (sometimes as high as +100\%).
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Unfiltered production: Step 1}
+ 
+Here are the statistics for the step 1 computing
+ 
+\begin{block}{Step 1 statistics}
+
+\input{tables/table_QCD_ProdUnfiltered_Step1.tex}
+
+\end{block}
+
+Some conclusions
+\begin{itemize}
+  \item It would be impossible to process every single event, it would take several millennia on a single CPU. We need some kind of gen filter.
+  \item On average events take between 1 and 3 minutes to go over the whole step.
+  \item Event size is under 2 MB (this is normal) and increases with $p_\perp$ hat.
+\end{itemize}
+
+NOTE: I am including PU at average 30 interactions.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Unfiltered production: Step 2}
+ 
+Here are the statistics for the step 2 computing
+ 
+\begin{block}{Step 2 statistics}
+
+\input{tables/table_QCD_ProdUnfiltered_Step2.tex}
+
+\end{block}
+
+Some conclusions
+\begin{itemize}
+  \item This step will not be a problem since it is after the selection
+  \item Event size is under 0.5 MB (this is normal) and increases with $p_\perp$ hat.
+\end{itemize}
+
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First working point}
+
+\begin{center}
+GenJets only ($p_\perp>50$, $|eta|<4.75$, $\Delta_{\eta}>3.5$, $\Delta_{\phi}<1.5$, $m_{jj}>1000$)
+\end{center}
+
+\begin{block}{Step 1 statistics: 1M events}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||c|c|c|c||c|c|c|}
+\hline
+ & \multicolumn{4}{c||}{CPU Times} &  \\
+\hline
+$p_\perp$ hat & Passed & Filter Eff Event & Total Filter &  Ev Total S1 CPU (s)  & S1 5k CPU (h) & S1 5k CPU (d) \\
+\hline
+\hline
+  30-50 & 6     & \num{6.00E-06} & \num{9.69E+06} & \num{7.17E+08} & 39.81  & 1.66 \\
+  50-80 & 417   & \num{4.17E-04} & \num{9.22E+07} & \num{9.93E+09} & 551.63 & 22.98 \\
+ 80-120 & 3204  & \num{3.20E-03} & \num{9.61E+07} & \num{1.22E+10} & 680.30 & 28.35 \\
+120-170 & 8857  & \num{8.86E-03} & \num{4.37E+07} & \num{3.59E+09} & 199.41 & 8.31 \\
+170-300 & 18828 & \num{1.88E-02} & \num{2.27E+07} & \num{3.28E+09} & 182.15 & 7.59 \\
+300-470 & 36953 & \num{3.70E-02} & \num{2.76E+06} & \num{3.18E+08} & 17.68  & 0.74 \\
+470-600 & 46455 & \num{4.65E-02} & \num{2.73E+05} & \num{3.66E+07} & 2.03   & 0.08 \\
+600-800 & 47430 & \num{4.74E-02} & \num{7.92E+04} & \num{1.25E+07} & 0.69   & 0.03 \\
+\hline
+\hline
+\multicolumn{4}{|l|}{Total} & \num{3.01E+10} & 1673.71 & 69.74 \\
+\hline
+\end{tabular}
+}
+
+\begin{itemize}
+  \item NOTE 1: 10x the statistics of last week!
+  \item NOTE 2: Time values do not include generator level times just reco times (should be dominant for higher $p_\perp$ hats.
+\end{itemize}
+
+\end{block}
+
+We could make this samples with 5k CPU in about 2 months, can be done privately with some work, but can be done easily by central production!
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Other working points}
+
+\begin{block}{Filter statistics}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c||l|}
+\hline
+ & \multicolumn{3}{c||}{CPU Times} &  \\
+\hline
+Filter &  Ev Total S1 CPU (s)  & S1 5k CPU (h) & S1 5k CPU (d) & Note \\
+\hline
+\hline
+Pt20\_Eta5p0\_DEta3p2\_Mjj700            & 4.03E+12 & 223652.83 & 9318.87 & Same as Run I without Generator MET \\
+\hline
+Pt50\_Eta4p75\_DEta3p5\_Dphi1p5\_Mjj1000 & 3.01E+10 &   1673.71 &   69.74 & Current working point \\
+\hline
+Pt40\_Eta4p75\_DEta3p5\_Mjj600           & 1.00E+12 &  55531.17 & 2313.80 & Same as new HLT path \\
+Pt40\_Eta4p75\_DEta3p5\_Dphi1p5\_Mjj600  & 1.90E+11 &  10539.90 &  439.16 & Same as new HLT path + $\Delta\phi$ \\
+\hline
+Pt40\_Eta4p75\_DEta3p5\_Dphi1p5\_Mjj1000 & 6.87E+10 &   3816.26 &  159.01 & Lower 10 GeV Dijet $p_\perp$ \\
+\hline
+Pt50\_Eta4p75\_DEta3p5\_Dphi2p0\_Mjj1000 & 4.10E+10 &   2280.27 &   95.01 & +0.5 $\Delta\phi$ cut \\
+Pt50\_Eta4p75\_DEta3p5\_Dphi2p5\_Mjj1000 & 6.24E+10 &   3467.57 &  144.48 & +1.0 $\Delta\phi$ cut \\
+Pt50\_Eta4p75\_DEta3p5\_Mjj1000          & 2.34E+11 &  13025.79 &  542.74 & No $\Delta\phi$ cut \\
+\hline
+\hline
+\end{tabular}
+}
+  
+\end{block}
+
+\begin{itemize}
+  \item Changing any studied parameter increases greatly the time to be spent generating 
+  \item Touching $\Delta\phi$ increases processing time about 1 month per 0.5 relaxation
+  \item Currently proposed working point same as last week
+\end{itemize}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Offline Filter Efficiency}
+
+For working point $p_\perp>50$, $|eta|<4.75$, $\Delta_{\eta}>3.5$, $\Delta_{\phi}<1.5$, $m_{jj}>1000$
+
+\begin{block}{Level 1 MET}
+
+\begin{columns}
+
+\column[t]{0.45\linewidth}  
+
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/L1Extra_MET.pdf}
+
+\column[t]{0.45\linewidth}  
+
+\begin{itemize}
+  \item Here L1 MET is the one the comes from this CMSSW version, its NOT the latest greatest.
+  \item We can see that many events have high L1 MET (much more than just real MET)
+\end{itemize}
+
+\end{columns}
+  
+\end{block}
+
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{HLT PFMET170}
+
+\begin{block}{Efficiency}
+
+\centering
+\begin{tabular}{|c||c|c|c|}
+\hline
+$p_\perp$ hat & Generated & Passed & Filter Eff  \\
+\hline
+\hline                                   
+  30-50 &   80000000    &   0 & 0        \\
+  50-80 &   20000000    &   0 & 0        \\
+ 80-120 &      3800000  &   0 & 0        \\
+120-170 & 2400000       &   0 & 0        \\
+170-300 &  700000       &   8 & 0.000011 \\
+300-470 &   460000      &  32 & 0.000070 \\
+470-600 &   320000      & 112 & 0.000350 \\
+600-800 &      270000   & 194 & 0.000719 \\
+\hline
+\hline
+\end{tabular}
+
+\end{block}
+  
+\begin{itemize}
+  \item Most events are killed and we now have dedicated path for this
+\end{itemize}
+  
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Found a working point with is feasible with no MET cut at generator level with the caveat that it has a delta phi cut.
+  \item A document including all the information is being written and will be sent around soon.
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next steps:}
+ 
+\begin{itemize}
+  \item Study decrease of $m_{jj}$ and $\Delta\eta$
+  \item Finish offline efficiency study
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\end{document}
