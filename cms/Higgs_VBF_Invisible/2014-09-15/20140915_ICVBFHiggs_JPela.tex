@@ -1,0 +1,144 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{appendixnumberbeamer}
+\usepackage{pdfpages}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[J. Pela]{\underline{J. Pela}, J. Brooke}
+\title{VBF Higgs to Invisible - Run 2 Trigger Studies}
+\institute[ICL]{Imperial College London}
+\date{2014-05-12}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Today's presentation}
+ 
+\begin{block}{Topics}
+ 
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Software changes}
+ 
+In order to using the Stage 1 emulator several changes are necessary
+ 
+\begin{block}{Moving to Stage 1 Emulator}
+ 
+\begin{itemize}
+  \item Move from SLC5 to SLC6
+  \item New CMSSW version: CMSSW\_7\_2\_0\_pre5 
+  \item Implies rerunning L1 Emulator over CMSSW\_6\_2\_5 TSG samples
+\end{itemize}
+
+\end{block}
+
+\begin{block}{What is different for us?}
+ 
+\begin{itemize}
+  \item New jet clustering algorithm.
+  \item Higher trigger tower thresholds (lower efficiency for low $p_\perp$ jets).
+  \item PU subtraction.
+\end{itemize}
+
+\end{block}
+
+Code setup receipts on backup slides for documentation
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary and next steps}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next Steps:}
+ 
+\begin{itemize}
+  \item 
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\appendix
+% ###################################################
+\begin{frame}
+ 
+\begin{block}
+
+\begin{center}Backup Slides\end{center}
+
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Code setup workflow: L1T Stage 1 emulator}
+
+\begin{block}
+
+\begin{verbatim}
+cmsrel CMSSW_7_2_0_pre5
+cd CMSSW_7_2_0_pre5/src
+cmsenv
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\end{document}
