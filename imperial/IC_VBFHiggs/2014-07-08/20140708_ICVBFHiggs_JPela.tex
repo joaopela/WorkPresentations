@@ -1,0 +1,730 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{appendixnumberbeamer}
+\usepackage{pdfpages}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[J. Pela]{J. Pela}
+\title{Update on Trigger Studies for 2015 (Legacy System)}
+\institute[ICL]{Imperial College London}
+\date{2014-07-28}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Today's presentation}
+
+\begin{block}{Topics}
+ 
+\begin{itemize}
+  \item HLT Seed study.
+  \item ECAL TT, HCAL TT and RCT Region saturation.
+  \item ECAL TT peak investigation.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Neutrino Gun (reminder)}
+
+\begin{block}{Base idea}
+ 
+For studying of L1T Rates the normal procedure is using neutrino gun samples. :
+\begin{itemize}
+ \item Hard process is invisible (only a neutrino is fired through the experiment)
+ \item Event consists only of PU (overlapped Minimum/Zero bias events)
+ \item Recreated the vast majority of events at the fire the L1T
+ \item Caveat: Does not contain any real hard scattering events therefore HLT studies cannot be done with them.
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Method}
+ 
+\begin{itemize}
+ \item Determine algorithm event selection efficiency, this will be the probability of a bunch firing.
+ \item Each bunch firing will represent 11246 Hz, so we apply efficiency and obtain rate per bunch.
+ \item We multiply per number of bunches on the machine to obtain algorithm pure rate (no overlapping with other algorithm)
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{HLT Seeds}
+
+\begin{block}{Information}
+ 
+\begin{itemize}
+  \item For full documentation purposes I have included what are the seeds for each one of our triggers available on the samples
+  \item While looking into the menu details I have notices the presence of 2 additional prompt-like triggers with PFMETnoMu75. I added them to the study.
+  \item Notice that all prompt triggers are seeded only by L1\_ETM40 and all parked by some combination of L1\_ETM and L1\_HTT.
+\end{itemize}
+ 
+\end{block}
+
+\begin{block}{Map of seeds}
+\centering
+
+\resizebox{0.8\linewidth}{!}{
+\begin{tabular}{|l||l|l|}
+\hline
+HLT Path & ETM Seeds & HTT Seeds \\
+\hline \hline
+HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets\_v     &  & L1\_ETM40 \\
+HLT\_DiPFJet40\_PFMETnoMu65\_MJJ600VBF\_LeadingJets\_v &  & L1\_ETM40 \\
+\hline \hline
+HLT\_DiPFJet40\_PFMETnoMu75\_MJJ800VBF\_AllJets\_v     &  & L1\_ETM40 \\
+HLT\_DiPFJet40\_PFMETnoMu75\_MJJ600VBF\_LeadingJets\_v &  & L1\_ETM40 \\    
+\hline \hline
+HLT\_DiJet20\_MJJ650\_AllJets\_DEta3p5\_HT120\_VBF\_v   & L1\_HTT200, L1\_HTT175             & L1\_ETM40, L1\_ETM50 \\
+HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF\_v          & L1\_HTT200, L1\_HTT175             & L1\_ETM40, L1\_ETM50 \\
+HLT\_DiJet35\_MJJ650\_AllJets\_DEta3p5\_VBF\_v          & L1\_HTT200, L1\_HTT175, L1\_HTT150 & L1\_ETM40 \\
+HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF\_v          & L1\_HTT200, L1\_HTT175             & L1\_ETM40 \\
+HLT\_DiJet35\_MJJ750\_AllJets\_DEta3p5\_VBF\_v          & L1\_HTT200, L1\_HTT175             & L1\_ETM40 \\
+\hline 
+\end{tabular}
+}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{VBF Invisible - Efficiency}
+
+\begin{columns}
+
+\column[t]{0.40\linewidth}
+\begin{block}{L1T}
+\centering
+
+\resizebox{1.0\linewidth}{!}{
+\input{VBFInv_L1TSignalEffiency.tex}
+}
+\end{block}
+
+\column[t]{0.55\linewidth}
+\begin{block}{Notes}
+ 
+\begin{itemize}
+  \item Notice that from L1\_ETM40 to L1\_ETM70 the signal efficiency drops by $\sim50\%$ on all scenarios
+  \item Also notice the decrease of efficiency on parked triggers as PU goes up and separation goes down.
+\end{itemize}
+ 
+\end{block}
+
+\end{columns}
+
+\begin{block}{HLT}
+\centering
+ 
+\resizebox{0.8\linewidth}{!}{  \input{VBFInv_HLTSignalEffiency.tex}}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Neutrino Gun - L1 Quantities}
+
+Here we can see the relevant seed L1 quantities evolution for each scenario:
+
+\begin{columns}
+
+\column[t]{0.45\linewidth}
+\begin{block}{L1T ETM}
+ 
+\centering
+\includegraphics[width=\linewidth]{fig/L1ETM_NG.pdf}
+ 
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{L1T HTT}
+ 
+\centering
+\includegraphics[width=\linewidth]{fig/L1HTT_NG.pdf}
+ 
+\end{block}
+
+\end{columns}
+
+As expected with increasing PU and decreasing separation, is is more likely to get higher of getting ETM and HTT. Still ETM seams less affected then HTT. 
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Neutrino Gun - Efficiency per bunch}
+
+\begin{columns}
+
+\column[t]{0.40\linewidth}
+\begin{block}{L1T}
+\centering
+
+\resizebox{1.0\linewidth}{!}{
+\input{NeutrinoGun_L1TBunchEff.tex}
+}
+
+\end{block}
+
+\column[t]{0.55\linewidth}
+\begin{block}{Notes}
+ 
+\begin{itemize}
+  \item We can see that going from L1\_ETM40 to L1\_ETM70 reduced significantly the amount of event passing (more than a factor 30)
+  \item Again we see a strange effects on the efficiency of parked VBF HLT Paths
+  \item We can separate by seed to try to disentangle.
+\end{itemize}
+ 
+\end{block}
+
+\end{columns}
+
+\begin{block}{HLT (Just for indicative purposes)}
+\centering
+ 
+\resizebox{0.8\linewidth}{!}{ \input{NeutrinoGun_HLTBunchEff.tex} }
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Neutrino Gun - Efficiency per bunch per seed (\% of total)}
+
+\begin{columns}
+
+\column[t]{0.50\linewidth}
+\begin{block}{HLT - ETM Seed only}
+\centering
+
+\resizebox{1.0\linewidth}{!}{ \input{NeutrinoGun_HLTBunchEff_ETM.tex} }
+
+\end{block}
+
+\begin{block}{HLT - HTT Seed only}
+\centering
+ 
+\resizebox{1.0\linewidth}{!}{ \input{NeutrinoGun_HLTBunchEff_HTT.tex} }
+
+\end{block}
+
+\begin{block}{HLT - Both ETM and HTT Seeds}
+\centering
+
+\resizebox{1.0\linewidth}{!}{ \input{NeutrinoGun_HLTBunchEff_Both.tex} }
+
+\end{block}
+
+\column[t]{0.40\linewidth}
+\begin{block}{Notes:}
+\centering
+
+\begin{itemize}
+  \item It looks like as we go move up in scenario:
+  \begin{itemize}
+    \item L1\_ETM only seed percentage goes down
+    \item L1\_HTT only goes up from PU20bx25 to PU40bx50 but does not change much to PU40bx25
+    \item Bith L1\_ETM and L1\_HTT goes up 
+  \end{itemize}
+  \item So it looks that the global behavior comes from the different trends of the seed components 
+\end{itemize}
+
+
+\end{block}
+
+\end{columns}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Neutrino Gun - Rate per bunch}
+
+\begin{columns}
+
+\column[t]{0.40\linewidth}
+\begin{block}{L1T}
+\centering
+
+\resizebox{1.0\linewidth}{!}{
+\input{NeutrinoGun_L1TBunchRate.tex}
+}
+
+\end{block}
+
+\column[t]{0.55\linewidth}
+\begin{block}{Notes}
+ 
+\begin{itemize}
+  \item Here we just apply the neutrino gun efficiency to the rate per bunch
+\end{itemize}
+ 
+\end{block}
+
+\end{columns}
+
+\begin{block}{HLT (Just for indicative purposes)}
+\centering
+ 
+\resizebox{0.8\linewidth}{!}{ \input{NeutrinoGun_HLTBunchRate.tex} }
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Neutrino Gun - Maximum Pure Rate}
+
+
+
+\begin{columns}
+
+\column[t]{0.40\linewidth}
+\begin{block}{L1T}
+\centering
+
+\resizebox{1.0\linewidth}{!}{
+\input{NeutrinoGun_L1TMaxRate.tex}
+}
+
+\end{block}
+
+\column[t]{0.55\linewidth}
+\begin{block}{Notes}
+ 
+\begin{itemize}
+  \item We can now apply the maximum number of bunch for each configuration which is 2808 for 25 ns and 1380 for 50 ns and calculate maximum pure 
+  \item As seen before the rates explode the unmanageable values.
+\end{itemize}
+ 
+\end{block}
+
+\end{columns}
+
+\begin{block}{HLT}
+\centering
+
+\resizebox{0.8\linewidth}{!}{\input{NeutrinoGun_HLTMaxRate.tex}}
+
+\end{block}
+
+\end{frame}
+
+% % ###################################################
+% \begin{frame}{Understanding higher rates from 25 to 50 ns}
+%  
+% I have identified several possible reason for this higher rates
+% \begin{block}{HLT}
+%  
+% \begin{itemize}
+%   \item Higher out of time pile up (OOT PU) due to higher bunch density and bunch to bunch interaction which will add events to calorimeters
+%   \item Saturation of ECAL or HCAL primitives and/or RCT zones
+%   \item High integration times by HCAL or ECAL systems (more OOT PU recorded or even more bx) 
+% \end{itemize}
+% 
+% \end{block}
+%  
+% Most like likely a combination of all of this effects.
+%  
+% \begin{block}{Steps taken}
+%  
+% \begin{itemize}
+%   \item Contacted HCAL and Trigger Calorimeter experts and indeed we integrate for 50ns the energy so energy on the next event at 25 ns will be in pratice OOT PU always...
+%   \item Recent studies have showed (see 2 weeks ago L1 DPG meeting) HCAL, ECAL or RCT saturation is now an issue and will generate ETM.
+%   \item I am in contact with people upgrading algorithms so we can profit from this.
+% \end{itemize}
+% 
+% \end{block} 
+%  
+% \end{frame}
+
+% ###################################################
+\begin{frame}{ECAL TT Compressed $E_{\perp}$}
+
+Looking for ECAL TT saturation on Neutrino gun events and VBF H(inv) signal.
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Neutrino Gun}
+\centering
+
+\includegraphics[width=\linewidth]{fig/EcalTT_Val_NG.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{VBF H(Inv)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/EcalTT_Val_Sig.pdf}
+
+\end{block}
+
+\end{columns}
+
+\begin{tiny}
+
+\begin{itemize}
+  \item ECAL TT saturation will not be a problem for us since is is an effect that cannot even be observed in neutrino gun samples.
+  \item But we can clearly see saturation effects on our signal sample (much more energy available)
+  \begin{itemize}
+    \tiny
+    \item The 255 peak is the expected saturation of 8 bit ECAL TT.
+    \item As for 127 peak, after contacting several experts no one can really explain it!? 
+  \end{itemize}
+\end{itemize}
+
+\end{tiny}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{HCAL TT Compressed $E_{\perp}$}
+
+Looking for HCAL TT saturation on Neutrino gun events and VBF H(inv) signal.
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Neutrino Gun}
+\centering
+
+\includegraphics[width=\linewidth]{fig/HcalTT_Val_NG.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{VBF H(Inv)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/HcalTT_Val_Sig.pdf}
+
+\end{block}
+
+\end{columns}
+
+\begin{tiny}
+
+\begin{itemize}
+  \item HCAL TT saturation will not be a problem for us since is is an effect can barely be observed in neutrino gun samples.
+  \item But we can clearly see saturation effects on our signal sample (much more energy available again) 
+  \begin{itemize}
+    \tiny
+    \item The 255 peak is the expected saturation of 8 bit HCAL TT.
+  \end{itemize}
+\end{itemize}
+
+\end{tiny}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{RCT Region Compressed $E_{\perp}$}
+
+Looking for RCT saturation on Neutrino gun events and VBF H(inv) signal.
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Neutrino Gun}
+\centering
+
+\includegraphics[width=\linewidth]{fig/RCTRegion_Val_NG.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{VBF H(Inv)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/RCTRegion_Val_Sig.pdf}
+
+\end{block}
+
+\end{columns}
+
+\begin{tiny}
+
+\begin{itemize}
+  \item RCT Region saturation cannot also be observed on the neutrino gun so I think it will not be a problem.
+  \item But we can clearly see saturation effects on our signal sample (much more energy available again) 
+  \begin{itemize}
+    \tiny
+    \item The 255 peak is the expected saturation of 8 bit HCAL and ECAL TT.
+    \item Above 511 we start seeing the effect of at least one RCT Region saturated. 
+  \end{itemize}
+\end{itemize}
+
+\end{tiny}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Loking at ETM on saturated events I}
+
+Now we can have a look at the properties of events of saturated ECAL TT (value=255), HCAL TT (value=255) or RCT Regions (value=511):
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Neutrino Gun}
+\centering
+
+\includegraphics[width=\linewidth]{fig/L1ETM_Sig.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{VBF H(Inv)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/L1ETM_Saturated_Sig.pdf}
+
+\end{block}
+
+\end{columns}
+
+As expected events with at least on part of the calorimeter system saturated show higher L1\_ETM.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Loking at ETM on saturated events II}
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Neutrino Gun}
+\centering
+
+\includegraphics[width=\linewidth]{fig/L1ETM_Overlap.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{Notes}
+
+\begin{itemize}
+  \item We can see that at about L1\_ETM300 about \%50 of the events are saturated 
+  \item We can see that at about L1\_ETM400 almost all events are saturated
+  \item This is not a problem now but can be with increasing PU. More saturated events will happen.
+\end{itemize}
+
+
+\end{block}
+
+\end{columns}
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Loking at HTT on saturated events}
+
+Now we can have a look at the properties of events of saturated ECAL TT (value=255), HCAL TT (value=255) or RCT Regions (value=511):
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{All events}
+\centering
+
+\includegraphics[width=\linewidth]{fig/L1HTT_Sig.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{VBF H(Inv)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/L1HTT_Saturated_Sig.pdf}
+
+\end{block}
+
+\end{columns}
+
+In the case of HTT events of saturated calorimeter parts are more rare and do not influence the shape so much. Also (for now) we are not considering this variable for seed.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Investigating ECAL TT peak at 127}
+
+First suggestion was to look at ECAL TT at between barrel and endcaps
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{Barrel (TT $ieta<17$)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/ECALTT_Barrel_CompressedEt.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{Endcap (TT $ieta>=17$)}
+\centering
+
+\includegraphics[width=\linewidth]{fig/ECALTT_Endcap_CompressedEt.pdf}
+
+\end{block}
+
+\end{columns}
+
+We can see that the effect is confined to endcaps!
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{TT Mapping}
+
+\begin{columns}
+ 
+\column[t]{0.45\linewidth}
+\begin{block}{TT and RCT regions map}
+\centering
+
+\includegraphics[width=0.8\linewidth]{fig/towers_ieta_iphi_2009.png}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}{Notes}
+\centering
+
+\begin{itemize}
+ \item For future reference this is the map of the RCT regions and ECAL/HCAL TT.
+ \item This allows for conversion from ieta and iphi units and eta and phi.
+ \item We can see that the barrel/encap overlap region is at $|ieta|=16,17$
+ \item We can see that ECAL ends at $eta=3.0$ which is $|ieta|=28$
+\end{itemize}
+
+\end{block}
+
+\end{columns}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Investigating ECAL TT peak at 127}
+
+Mapping of all events that have ECAL TT equal to 127
+
+\begin{columns}
+  
+\column[t]{0.45\linewidth}
+\begin{block}{Distribution of TT}
+\centering
+
+\includegraphics[width=\linewidth]{fig/ECALTT_CompressedEt127_EtaPhiTotal.pdf}
+
+\end{block}
+
+\column[t]{0.45\linewidth}
+\begin{block}
+\centering
+
+We can see that a large concentration of event at the end of the endcaps $ieta=27,28$
+\begin{itemize}
+  \item Is there anything special about this ECAL TT? I know they have strange geometries and less then 25 crystals... but should also have 8 bits coming out no?
+  \item This can be a real effect (also present on data) or just a simulation effect (just on MC)
+  \item If this is a real saturation (no more that 127 is possible in those towers) this will be easier to saturate specially by VBF like jets, making basically VBF+jets signature at L1... this may be a problem.
+\end{itemize}
+
+\end{block}
+
+\end{columns}
+
+
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary and next steps}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Different trends in parked triggers beginning to be understood.
+  \item Saturation will not be a problem for rates (neutrino gun studies) but will change a small fraction of our signal shapes at L1 (more L1\_ETM40 better? even if from saturation?).
+  \item Investigation of ECAL TT 127 peak study underway, apparently found an unknown problem in the detector or simulation. 
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next Steps:}
+ 
+\begin{itemize}
+  \item Look at L1\_ETM70 + HLT path to calculate signal efficiency if we do nothing.
+  \item Calculate VBF signal efficiency assuming SUSY L1 proposals (some are very interesting using MHT/HTT which should work for us).
+  \item Re-calculate everything for UCT L1 objects.
+  \item Investigate the ECAL TT 127 peak and pass information to the relevant group.
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\appendix
+% ###################################################
+\begin{frame}
+ 
+\begin{block}
+
+\begin{center}Backup Slides\end{center}
+
+\end{block}
+
+\end{frame}
+
+% {
+% \setbeamercolor{background canvas}{bg=}
+% \includepdf[pages=11]{hinv\_magnan\_140506.pdf}
+% }
+
+\end{document}
