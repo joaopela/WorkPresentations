@@ -1,0 +1,95 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{appendixnumberbeamer}
+% \usepackage{pdfpages}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{J. Pela}
+\title{MET Filters efficiency}
+\institute[ICL]{Imperial College London}
+\date{2014-12-02}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+\newcommand*\rot{\rotatebox{90}}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{No Cuts}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+HBHENoiseFilter & 22.900905 & 22.527028 & 24.197981 & 21.830762 & 0.190670 & 0.187739 & 0.170753 \\
+EcalDeadCellTriggerPrimitiveFilter & 0.375381 & 2.106058 & 2.122628 & 0.838167 & 0.009300 & 0.010206 & 0.012526 \\
+eeBadScFilter & 0.007852 & 0.002690 & 0.000087 & 0.001883 & 0.000001 & 0.000000 & 0.000009 \\
+trackingFailureFilter & 3.073876 & 1.147820 & 1.638249 & 1.723157 & 0.000328 & 0.007464 & 0.000290 \\
+manystripclus53X & 0.001829 & 0.004350 & 0.007730 & 0.005510 & 0.001319 & 0.002335 & 0.001327 \\
+toomanystripclus53X & 0.000484 & 0.001765 & 0.003141 & 0.001732 & 0.001149 & 0.002006 & 0.001173 \\
+logErrorTooManyClusters & 0.000027 & 0.000190 & 0.000379 & 0.000102 & 0.000009 & 0.000021 & 0.000016 \\
+CSCTightHaloFilter & 10.263068 & 7.792489 & 6.133730 & 8.346904 & 0.398497 & 0.402936 & 0.508025 \\
+\hline
+Total & 28.501208 & 28.317395 & 28.978159 & 26.047078 & 0.598417 & 0.601999 & 0.689380 \\
+\hline
+\end{tabular}
+}
+
+\end{frame}
+
+\begin{frame}{After trigger}
+
+\begin{itemize}
+ \item At least one good vertex (this is required by the trackingFailureFilter anyway)
+ \item L1T ETM $>= 40$ GeV
+ \item HLT path filter
+ \begin{itemize}
+   \item From run 190456 to 193621 (Run 2012 A) use HLT\_DiPFJet40\_PFMETnoMu65\_MJJ800VBF\_AllJets* 
+   \item From run 193833 to 196531 (Run 2012 B) use HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF*      
+   \item From run 198022 to 203742 (Run 2012 C) use HLT\_DiJet35\_MJJ700\_AllJets\_DEta3p5\_VBF*
+   \item From run 203777 to 208686 (Run 2012 D) use HLT\_DiJet30\_MJJ700\_AllJets\_DEta3p5\_VBF* 
+ \end{itemize}
+\end{itemize}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+CSCTightHaloFilter & 0.400431 & 0.470900 & 0.464342 & 0.569372 & 0.397531 & 0.403156 & 0.506917 \\
+EcalDeadCellTriggerPrimitiveFilter & 0.572468 & 0.484952 & 0.497310 & 0.323193 & 0.010081 & 0.010338 & 0.010725 \\
+HBHENoiseFilter & 1.264571 & 0.818385 & 1.705594 & 0.488496 & 0.186895 & 0.178422 & 0.154080 \\
+eeBadScFilter & 0.000989 & 0.000153 & 0.000000 & 0.000000 & 0.000001 & 0.000000 & 0.000000 \\
+logErrorTooManyClusters & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 & 0.000000 \\
+manystripclus53X & 0.002966 & 0.001222 & 0.002530 & 0.001420 & 0.001264 & 0.002304 & 0.001255 \\
+toomanystripclus53X & 0.002966 & 0.001069 & 0.002445 & 0.001332 & 0.001093 & 0.001955 & 0.001103 \\
+trackingFailureFilter & 0.062289 & 0.013899 & 1.102885 & 0.000710 & 0.000401 & 0.009729 & 0.000231 \\
+\hline
+Total & 2.201877 & 1.727498 & 2.627194 & 1.337206 & 0.594332 & 0.592977 & 0.671026 \\
+\hline
+\end{tabular}
+}
+
+\end{frame}
+
+
+\end{document}
