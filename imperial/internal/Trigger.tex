@@ -1,0 +1,188 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{siunitx}  % Allows easy x10^ for numbers
+% \usepackage{appendixnumberbeamer}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela,\\ on behalf of the VBF Higgs to invisible analysis group}
+\title{QCD VBF+MET samples for Run II}
+\institute[ICL]{Imperial College London}
+\date{2015-05-12}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Objectives and Strategy}
+
+\begin{block}{Objectives}
+  
+Obtain a representative sample (equivalent to 10 $fb^-1$ ot more) of QCD with our signal characteristics.
+
+\begin{itemize}
+  \item 2 or more QCD jets with VBF characteristics
+  \item Large MET
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Strategy}
+
+Cut at Generator Level and after SIM (at Level 1 Trigger Quantities)
+
+\begin{itemize}
+  \item Generator level cut over a AK4 GenJet pair 
+  \item Cut at L1 Trigger MET
+\end{itemize}
+
+Results events will have MET both from real (neutrinos) and fake (mis-measurement) sources 
+
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Proposal}
+
+Current working point:
+
+\begin{block}{Generator level cut}
+
+\begin{itemize}
+  \item Jets: $p_\perp>50$, $|eta|<4.75$, 
+  \item Dijet: $\Delta_{\eta}>3.0$, $\Delta_{\phi}<2.0$, $m_{jj}>1000$
+\end{itemize}
+
+Events will pass if any dijet is found passing conditions of all.
+
+\end{block}
+
+\begin{block}{Level-1 Trigger cut}
+
+\begin{itemize}
+  \item $L1_{ETM}>70$
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Generator Level Cut Statistics}
+
+Values obtained with CMSSW\_7\_2\_0\_patch1 over 1M events simulation with average PU 30 (50 ns separation).
+
+\begin{block}{Results:}
+  
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||c|c||c||c|c|c|}
+\hline
+        &  \multicolumn{2}{c||}{Generator Filter} & Events 10fb-1 & \multicolumn{3}{c|}{CPU Time} \\
+\hline
+pT hat  & Passed & Filter Eff & Pass Filter & 1 CPU (s) & 5k CPU (h) & 5k CPU (d) \\
+\hline
+\hline
+  30-50 & 3     & \num{3.00E-06} & \num{4.85E+06} & \num{3.58E+08} &   19.90 & 0.83  \\
+  50-80 & 415   & \num{4.15E-04} & \num{9.18E+07} & \num{9.88E+09} &  548.98 & 22.87 \\
+ 80-120 & 3399  & \num{3.40E-03} & \num{1.02E+08} & \num{1.30E+10} &  721.71 & 30.07 \\
+120-170 & 9935  & \num{9.94E-03} & \num{4.90E+07} & \num{4.03E+09} &  223.68 & 9.32  \\
+170-300 & 21894 & \num{2.19E-02} & \num{2.63E+07} & \num{3.81E+09} &  211.82 & 8.83  \\
+300-470 & 48211 & \num{4.82E-02} & \num{3.60E+06} & \num{4.15E+08} &   23.07 & 0.96  \\
+470-600 & 68519 & \num{6.85E-02} & \num{4.02E+05} & \num{5.40E+07} &    3.00 & 0.12  \\
+600-800 & 77383 & \num{7.74E-02} & \num{1.29E+05} & \num{2.03E+07} &    1.13 & 0.05  \\
+\hline
+\hline
+\multicolumn{3}{|l||}{Total} & \num{2.78E+08} & \num{3.16E+10} & 1753.29 & 73.05 \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\begin{itemize}
+  \item Sample could be produced with in about 75 days assuming usage of 5k CPU. 
+  \item This is equivalent of the processing of 280M events through SIM and DIGI.
+  \item Not all events are stored since offline cuts will be in place.
+\end{itemize}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Both Filter Statistics}
+
+Results here are for an offline cut of $L1_{ETM}>=70$ GeV. This is the current seed for our HLT Paths.
+
+\begin{block}{Results:}
+  
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c||c||c|c||c|c||c||c|c|}
+\hline
+        &          & \multicolumn{2}{c||}{Generator Filter} & \multicolumn{2}{c||}{Offline Filter} & Both Filters & \multicolumn{2}{c|}{Events 10fb-1} \\
+\hline
+pT hat  & Gen. Ev. & Pass  & Efficiency & Pass & Efficiency & Efficiency & Expected & Pass Both \\
+\hline
+\hline
+  30-50 & 88320000 & 3903  &  0.0000442 & 21    & 0.00538 & \num{2.38E-07} & \num{1.62E+12} & \num{3.84E+05} \\
+  50-80 & 39500000 & 47391 &  0.0011998 & 2609  & 0.05505 & \num{6.61E-05} & \num{2.21E+11} & \num{1.46E+07} \\
+ 80-120 &  7562000 & 42508 &  0.0056213 & 8929  & 0.21005 & \num{1.18E-03} & \num{3.00E+10} & \num{3.54E+07} \\
+120-170 &  4788000 & 63982 &  0.0133630 & 24461 & 0.38231 & \num{5.11E-03} & \num{4.93E+09} & \num{2.52E+07} \\
+170-300 &  1400000 & 38240 &  0.0273143 & 17691 & 0.46263 & \num{1.26E-02} & \num{1.20E+09} & \num{1.52E+07} \\
+300-470 &   913100 & 52334 &  0.0573146 & 30077 & 0.57471 & \num{3.29E-02} & \num{7.48E+07} & \num{2.46E+06} \\
+470-600 &   632000 & 51615 &  0.0816693 & 32939 & 0.63817 & \num{5.21E-02} & \num{5.87E+06} & \num{3.06E+05} \\
+600-800 &   534600 & 49347 &  0.0923064 & 34382 & 0.69674 & \num{6.43E-02} & \num{1.67E+06} & \num{1.07E+05} \\
+\hline
+\hline
+\multicolumn{8}{|l|}{Total} & \num{9.37E+07} \\
+\hline
+\end{tabular}
+}
+
+\end{block}
+
+\begin{itemize}
+  \item Total amount of events passing cuts on all samples is 94M (average around 12M per pT hat).
+  \item Biggest pT hat sample would be 80-120 with 35M events.
+  \item L1T trigger algorithms and simulation have changed since CMSSW\_7\_2\_0\_patch1 (example PU subtraction and better resolution) this values ``may have improved''.
+\end{itemize}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item A working point for producing QCD VBF-like + MET samples without a Generator MET cut was found.
+  \item It includes a dijet delta phi cut but this was tuned to not cut into Run I published analysis signal region.
+  \item Production is feasible with a reasonable number of CPU in less than 3 months.
+  \item Similar to some of the large samples already made by central production 
+  \item Final sample size of around 94M events (About twice the Minimum Bias sample from Fall13-POSTLS162)
+  \item New technique should allow for que first to study QCD contamination to this analysis (real and fake MET events).
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\end{document}
