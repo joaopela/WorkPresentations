@@ -1,0 +1,377 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{appendixnumberbeamer}
+% \usepackage{pdfpages}
+
+\usetheme{Madrid}
+
+\author[J. Pela]{J. Pela}
+\title{VBF Higgs to Invisible cross check analysis}
+\institute[ICL]{Imperial College London}
+\date{2014-11-24}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+\newcommand*\rot{\rotatebox{90}}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Introduction}
+
+ were produced by two different and independent code frameworks. This a
+
+\begin{block}{2012 prompt results and publication}
+ 
+ \begin{itemize}
+  \item Produced by two different and independent code frameworks
+  \item Allowed debugging via synchronization
+  \item Extra confidence on the final results
+ \end{itemize}
+
+\end{block}
+
+\begin{block}{2012 parked results and publication}
+ 
+  Due to lack of man power and time only one full framework. Later decided some level cross check would be beneficial for the analysis. What is being done:
+ 
+ \begin{itemize}
+  \item Cross check analysis starts from the same ntuples produced by the main analysis.
+  \begin{itemize}
+    \item All the relevant datasets with not filtering (except golden JSON), just data reduction and parking.
+    \item Production of ntuples uses same framework on other validated analysis: SM and MSSM Higgs $\tau\bar{\tau}$, the Higgs to $\tau\bar{\tau}b\bar{b}$ and also the prompt invisible result.
+  \end{itemize}
+  
+ \end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Software}
+
+I have created a git software repository for analysis independent software and tools about a year ago this will be the base for the analysis code:
+\begin{block}{Base}
+https://github.com/joaopela/HEPFW
+\end{block}
+
+This software package was already forked and was the base for the recent Run II trigger studies and now is being used for the cross check analysis.
+\begin{block}{Fork}
+https://github.com/ICHiggsInv/HEPFW
+\end{block}
+
+The target is to have a framework capable of replicating all the relevant pltos and numbers of the main analysis.
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Code structure}
+ 
+Framework development was inspired on CMSSW and ROOT structures and features.
+ 
+\begin{block}{Structure features}
+
+\begin{itemize}
+  \item Configuration files via JSON files
+  \begin{itemize}
+    \item Similar function to python in CMSSW
+    \item Allows complex structures to be passed to program out of the box (vector, map, nested arguments, etc)
+    \item (Under development) Ability to load other JSON files from initial configuration file 
+  \end{itemize}
+  \item Working with sequences of modules that access the event (like CMSSW):
+  \begin{itemize}
+    \item Analysis modules: Produce plots and tables
+    \item Filter plots: Pass/fail for an event on a sequence of modules (analysis cuts)
+    \item Producer plots: Add content to the event (filtered or modified collections)
+  \end{itemize}
+  \item (Underdevelopment) Saving events passing a given sequence (like CMSSW)
+  \begin{itemize}
+    \item Allows for skimming of both events and events content
+    \item This feature has been envisaged since the beginning of the development so some of the code hooks are already present.
+  \end{itemize}
+\end{itemize}
+
+\end{block}
+
+\begin{center}
+All this code has been development in the last 2 weeks.
+\end{center}
+
+\end{frame}
+ 
+ % ###################################################
+\begin{frame}
+
+\begin{block}{Capabilities}
+ 
+  \begin{itemize}
+   \item Access IC Dataformats
+   \item Run over all datasets automatically
+   \item Multiple sequence capability
+   \item EDM filter filtering
+   \item Event list filtering
+   \item Collection cuts based filtering
+   \item Collection overlap filtering
+  \end{itemize}
+
+\end{block}
+ 
+\begin{block}{Analysis specific}
+
+  \begin{itemize}
+   \item Vertex selection
+   \item HLT and L1T filtering
+   \item Electron selection (and veto)
+   \item Muon selection (and veto)
+   \item MET cuts
+   \item Jet cuts (NEW: finished!)
+   \item Multiple object cuts ($Min(\Delta\phi(MET,jets))$)
+  \end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################                           
+\begin{frame}{Problems and Documentation issues}
+ 
+\begin{block}{Problems}
+ 
+\begin{itemize}
+ \item L1T ETM Cut values $>40$ vs $>=40$
+ \item Primary vertex conditions
+ \begin{itemize}
+   \item Data: !isFake, $ndof > 4$, $abs(z) <= 24$, $position.rho < 2$
+   \item MC: minNdof = cms.double(4.0), maxZ = cms.double(24.0)
+ \end{itemize}
+
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Documentation}
+ 
+\begin{itemize}
+ \item Electron additional cuts: Some of the cuts said to be additional are actually default POG cuts.
+\end{itemize} 
+ 
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Problems Found: Primary vertex conditions}
+ 
+\end{frame}
+
+% ###################################################
+\begin{frame}{Problems Found: PFJet ID AN-to-Code disagreement}
+ 
+I found that in the Analysis Note the definition of selected jets is:
+
+\begin{block}
+
+\begin{itemize}
+  \item The jet requirements are:
+  \begin{itemize}
+    \item Neutral Hadron Fraction $ <0.99 $
+    \item Neutral EM Fraction $ <0.99 $
+    \item Number of Constituents  $ >1 $
+    \item Additionally for $|\eta| < 2.4$ we require:
+  \end{itemize}
+  \begin{itemize}
+    \item Charged Hadron Fraction $ >0 $
+    \item Charged Multiplicity $ >0 $
+    \item Charged EM Fraction $ 0.99 $
+   \end{itemize}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{In the code}
+
+int n\_pu = jet->charged\_multiplicity() + jet->neutral\_multiplicity() + jet->HF\_had\_multiplicity() + jet->HF\_em\_multiplicity();
+n\_pu > 0;
+
+\end{block}
+
+It is written that this cuts come from AN 2010/003 but this analysis not is on 'Study of Various Photomultiplier Tubes with Muon Beams And Cerenkov Light Produced in Electron Showers' and has no cuts defined.
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{First results - event quality filters}
+
+We apply a set of event quality filters to exclude events with clear problems. This filters cover several issue like bad experimental conditions (like too much beam halo), detector noise and problems with reconstruction. The inclusion of the filter is recommended for analysis using MET.
+
+The following table has the percentage of rejected events by each filter individually before any other cuts are applied to data. At the end the total percentage event rejection (using an or of all filters) is provided. 
+
+\begin{block}{Topics}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+HBHENoiseFilter & 22.900905 & 22.527028 & 24.197981 & 21.830762 & 0.190670 & 0.187739 & 0.170753 \\
+EcalDeadCellTriggerPrimitiveFilter & 0.375381 & 2.106058 & 2.122628 & 0.838167 & 0.009300 & 0.010206 & 0.012526 \\
+eeBadScFilter & 0.007852 & 0.002690 & 0.000087 & 0.001883 & 0.000001 & 0.000000 & 0.000009 \\
+trackingFailureFilter & 3.073876 & 1.147820 & 1.638249 & 1.723157 & 0.000328 & 0.007464 & 0.000290 \\
+manystripclus53X & 0.001829 & 0.004350 & 0.007730 & 0.005510 & 0.001319 & 0.002335 & 0.001327 \\
+toomanystripclus53X & 0.000484 & 0.001765 & 0.003141 & 0.001732 & 0.001149 & 0.002006 & 0.001173 \\
+logErrorTooManyClusters & 0.000027 & 0.000190 & 0.000379 & 0.000102 & 0.000009 & 0.000021 & 0.000016 \\
+CSCTightHaloFilter & 10.263068 & 7.792489 & 6.133730 & 8.346904 & 0.398497 & 0.402936 & 0.508025 \\
+\hline \hline
+Total & 28.501208 & 28.317395 & 28.978159 & 26.047078 & 0.598417 & 0.601999 & 0.689380 \\
+\hline
+\end{tabular}}
+
+\end{block}
+
+\begin{block}{Comparison with main analysis:}
+ This values can be found on the first part of table 3 on the AN2014\_243\_v4. While total filter efficiency matched exactly the values presented on the note, there are small
+ discrepancies on individual filters with very low event exclusion. This discrepancies may be due to rounding problems or double vs float conversions where precision is lot.
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First results - ECAL and HCAL laser  filters}
+
+There are events that should be not be considered due to have been recorded while the ECAL and/or HCAL laser calibration sequence was happening. The identification of this events is provided through a file list which is used by the code framework to remove those events. The following table shows the individual and total percentage of events vetoed out of the the ones already passing the event quality filters of the previous section.
+
+\begin{block}{Topics}
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+ECAL Laser Filter & 0.928521 & 1.195528 & 0.000000 & 0.000000 & 0.008659 & 0.000000 & 0.000000 \\
+HCAL Laser Filter & 0.007258 & 0.000027 & 0.004963 & 0.000000 & 0.000000 & 0.000270 & 0.000000 \\
+\hline \hline
+ECAL+HCAL Laser Filter & 0.935704 & 1.195556 & 0.004963 & 0.000000 & 0.008659 & 0.000270 & 0.000000 \\
+\hline
+\end{tabular}}
+
+\end{block}
+
+\begin{block}{Comparison with main analysis:}
+The "ECAL+HCAL Laser Filter" line of values can be compared with the one on  table 3 on the AN2014\_243\_v4. Values match exactly the ones of the main analysis.
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First results - Preselection data yield}
+
+\begin{block}{Yield}
+ 
+\begin{itemize}
+ \item DATA\_MET\_2012A: 388
+ \item DATA\_MET\_2012B: 1541
+ \item DATA\_MET\_2012C: 2941
+ \item DATA\_MET\_2012D: 2905
+ \item DATA\_VBF\_Parked\_2012B: 1737
+ \item DATA\_VBF\_Parked\_2012C: 3282
+ \item DATA\_VBF\_Parked\_2012D: 3184
+\end{itemize}
+
+Total events 8591 while the main analysis has 8971 (so I have less 4.2\%). Caveats main analysis number does not have the L1T ETM fix and the $n_{Constituents}$ fix. Code needs to be reviewed to find where is the problem.
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary and next steps}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Now able to replicate some number of the analys note.
+  \item Some bugs already found (minimal influce in main analysis):
+  \begin{itemize}
+    \item Good vertex requirement not being requested on main analysis code (effect unknow but should be small)
+    \item L1T met cut was $>40$ and not $>=40$
+  \end{itemize}
+  \item Analysis contribution
+  \begin{itemize}
+    \item Checking all definitions against POG recommendation
+  \end{itemize}
+  \end{itemize}
+
+\end{block}
+
+\begin{block}{Next Steps:}
+ 
+\begin{itemize}
+  \item Replicate pre-selection results.
+\end{itemize}
+ 
+\end{block}
+
+\begin{center}
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/VBFHInvParkedDataCrossCheck
+\end{center}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{dcd}
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+ & \rotatebox{90}{Vertex Filter} & \rotatebox{90}{Event Quality Filters} & \rotatebox{90}{HCAL Laser Filter} & \rotatebox{90}{ECAL Laser Filter} & \rotatebox{90}{L1T ETM Filter} & \rotatebox{90}{HLT Trigger} & \rotatebox{90}{Loose Electrons Producer} & \rotatebox{90}{Electron veto} & \rotatebox{90}{Loose Muon Producer} & \rotatebox{90}{Muon veto} & \rotatebox{90}{Selected Jet Producer} & \rotatebox{90}{PFJets-Loose Electron cleaning} & \rotatebox{90}{PFJets-Loose Muon cleaning} & \rotatebox{90}{MET Cut} & \rotatebox{90}{MET Significance} & \rotatebox{90}{Dijet} & \rotatebox{90}{MET Jets DPhi} \\
+\hline \hline
+DATA MET 2012A & 3606391 & 2658960 & 2658767 & 2634080 & 2461217 & 97522 & 97522 & 96600 & 96600 & 94961 & 94961 & 94961 & 94961 & 19574 & 10079 & 3831 & 388 \\
+DATA MET 2012B & 15076553 & 10926634 & 10926631 & 10796000 & 9316076 & 633305 & 633305 & 627254 & 627254 & 620327 & 620327 & 620327 & 620327 & 107139 & 53054 & 16505 & 1541 \\
+DATA MET 2012C & 21570165 & 15555671 & 15554899 & 15554899 & 13668424 & 1154795 & 1154795 & 1143298 & 1143298 & 1130114 & 1130114 & 1130114 & 1130114 & 189540 & 94349 & 29268 & 2941 \\
+DATA MET 2012D & 59027309 & 44411435 & 44411435 & 44411435 & 37528140 & 2222706 & 2222706 & 2203960 & 2203960 & 2188438 & 2188438 & 2188438 & 2188438 & 250910 & 105014 & 30007 & 2905 \\
+DATA VBF Parked 2012B & 132346320 & 131554431 & 131554431 & 131543040 & 88174347 & 75100422 & 75100422 & 74947192 & 74947192 & 74917473 & 74917473 & 74917473 & 74917473 & 203555 & 85225 & 24211 & 1737 \\
+DATA VBF Parked 2012C & 228049748 & 226680352 & 226679741 & 226679741 & 160560859 & 137527238 & 137527238 & 137241812 & 137241812 & 137187462 & 137187462 & 137187462 & 137187462 & 345103 & 138386 & 42730 & 3282 \\
+DATA VBF Parked 2012D & 308041846 & 305918529 & 305918529 & 305918529 & 227801622 & 152041761 & 152041761 & 151725585 & 151725585 & 151662101 & 151662101 & 151662101 & 151662101 & 436510 & 145761 & 41667 & 3184 \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+\hline
+Jet $p_{\perp}$ & Jet $|\eta|$ & $BDT_{score}$ \\
+\hline \hline
+$20 < p_{\perp} \leq 30$ & $|\eta| < 2.5$ & $BDT_{score} > -0.80$ \\
+$20 < p_{\perp} \leq 30$ & $2.50 \leq |\eta| < 2.75$ & $BDT_{score} > -0.85$ \\
+$20 < p_{\perp} \leq 30$ & $2.75 \leq |\eta| < 3.00$ & $BDT_{score} > -0.84$ \\
+$20 < p_{\perp} \leq 30$ & $3.00 \leq |\eta| < 5.00$ & $BDT_{score} > -0.85$ \\
+$30 < p_{\perp}$ & $|\eta| < 2.5$ & $BDT_{score} > -0.80$ \\
+$30 < p_{\perp}$ & $2.50 \leq |\eta| < 2.75$ & $BDT_{score} > -0.74$ \\
+$30 < p_{\perp}$ & $2.75 \leq |\eta| < 3.00$ & $BDT_{score} > -0.68$ \\
+$30 < p_{\perp}$ & $3.00 \leq |\eta| < 5.00$ & $BDT_{score} > -0.77$ \\
+\hline
+\end{tabular}
+
+}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,172 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{appendixnumberbeamer}
+\usepackage{pdfpages}
+% \usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% 
+% % New compile sequence for feynmp
+% \makeatletter
+% \def\endfmffile{%
+%   \fmfcmd{\p@rcent\space the end.^^J%
+%           end.^^J%
+%           endinput;}%
+%   \if@fmfio
+%     \immediate\closeout\@outfmf
+%   \fi
+%   \ifnum\pdfshellescape=\@ne
+%     \immediate\write18{mpost \thefmffile}%
+%   \fi}
+% \makeatother
+
+\usetheme{Madrid}
+
+\author[J. Pela]{\underline{J. Pela}, J. Brooke}
+\title{VBF ($H\rightarrow\text{Invisible}$ cross check analysis}
+\institute[ICL]{Imperial College London}
+\date{2014-11-24}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Today's presentation}
+ 
+\begin{block}{Topics}
+ 
+\begin{itemize}
+  \item Software 
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Software changes}
+ 
+
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First results: event quality filters}
+
+
+\begin{block}{Topics}
+\centering
+
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+HBHENoiseFilter & 22.900905 & 22.527028 & 24.197981 & 21.830762 & 0.190670 & 0.187739 & 0.170753 \\
+EcalDeadCellTriggerPrimitiveFilter & 0.375381 & 2.106058 & 2.122628 & 0.838167 & 0.009300 & 0.010206 & 0.012526 \\
+eeBadScFilter & 0.007852 & 0.002690 & 0.000087 & 0.001883 & 0.000001 & 0.000000 & 0.000009 \\
+trackingFailureFilter & 3.073876 & 1.147820 & 1.638249 & 1.723157 & 0.000328 & 0.007464 & 0.000290 \\
+manystripclus53X & 0.001829 & 0.004350 & 0.007730 & 0.005510 & 0.001319 & 0.002335 & 0.001327 \\
+toomanystripclus53X & 0.000484 & 0.001765 & 0.003141 & 0.001732 & 0.001149 & 0.002006 & 0.001173 \\
+logErrorTooManyClusters & 0.000027 & 0.000190 & 0.000379 & 0.000102 & 0.000009 & 0.000021 & 0.000016 \\
+CSCTightHaloFilter & 10.263068 & 7.792489 & 6.133730 & 8.346904 & 0.398497 & 0.402936 & 0.508025 \\
+\hline
+Total & 28.501208 & 28.317395 & 28.978159 & 26.047078 & 0.598417 & 0.601999 & 0.689380 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First results: ECAL+HCAL filters}
+
+
+\begin{block}{Topics}
+\centering
+
+\begin{tabular}{|l||c|c|c|c||c|c|c|}
+\hline
+Filter & Prompt A & Prompt B & Prompt C & Prompt D & Parked B & Parked C & Parked D \\
+\hline \hline
+ECAL Laser Filter & 0.928521 & 1.195528 & 0.000000 & 0.000000 & 0.008659 & 0.000000 & 0.000000 \\
+HCAL Laser Filter & 0.007258 & 0.000027 & 0.004963 & 0.000000 & 0.000000 & 0.000270 & 0.000000 \\
+\hline
+ECAL+HCAL Laser Filter & 0.935704 & 1.195556 & 0.004963 & 0.000000 & 0.008659 & 0.000270 & 0.000000 \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary and next steps}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Next Steps:}
+ 
+\begin{itemize}
+  \item 
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\appendix
+% ###################################################
+\begin{frame}
+ 
+\begin{block}
+
+\begin{center}Backup Slides\end{center}
+
+\end{block}
+
+\end{frame}
+
+
+% ###################################################
+\begin{frame}{Code setup workflow: L1T Stage 1 emulator}
+
+\begin{block}
+
+\begin{verbatim}
+cmsrel CMSSW_7_2_0_pre5
+cd CMSSW_7_2_0_pre5/src
+cmsenv
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\end{document}
