@@ -1,0 +1,247 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+% \usepackage{cancel}
+\usepackage{ulem}
+% \usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+% \usepackage{appendixnumberbeamer}
+\usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+%Rule for feynmp diagrams to be considered graphics
+\DeclareGraphicsRule{*}{mps}{*}{}
+
+% New compile sequence for feynmp
+\makeatletter
+\def\endfmffile{%
+  \fmfcmd{\p@rcent\space the end.^^J%
+          end.^^J%
+          endinput;}%
+  \if@fmfio
+    \immediate\closeout\@outfmf
+  \fi
+  \ifnum\pdfshellescape=\@ne
+    \immediate\write18{mpost \thefmffile}%
+  \fi}
+\makeatother
+
+\usetheme{Madrid}
+
+\author[J. Pela]{João Pela}
+\title{Update on the VBF Invisible cross check analysis}
+\institute[ICL]{Imperial College London}
+\date{2014-12-04}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+% ###################################################
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ###################################################
+\begin{frame}{Today's presentation}
+ 
+\begin{block}{Topics}
+ 
+\begin{itemize}
+  \item Cross check framework updates
+  \item Updated pre-selection yiels
+  \item Electron+MET region yields 
+\end{itemize}
+ 
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Cross check framework updates}
+ 
+\begin{block}{Topics}
+ 
+\begin{itemize}
+  \item Core event processing code review and simplified
+  \item Multiple sequences can be defined and executed in a single job, no module execution repetition.
+  \item Using JSON language for configuration files (same role as python in CMSSW)
+  \begin{itemize}
+    \item Each file can load other configuration files (allows splitting of cfg files)
+    \item Per modules/sequence parameter (like CMSSW)
+    \item Allows modules sequence definition outside of code (no recompilation)
+    \item No hard-coding of an parameter of sequence.
+  \end{itemize}
+  \item Some limited C++ refection capabilities: Framework detects new (user defined) modules and the become automatically usable via configuration file.  
+  \item New modules to produce modified MET (necessary to produce MET-no-Muons and later MET scaling)
+\end{itemize}
+
+\end{block}
+
+This new features will allow further implementation of all regions and systematic studies in a faster/modular way. Commissioning was made by reproducing exactly the yields for data at the pre-selection level. 
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Typo found}
+
+While converting framework to the new non-hard-coded structure I review all cuts already implemented and found a typo on the electron veto (specifically on the value of the relative combined isolation) which I corrected.
+ 
+\begin{block}{Pre-selection yields}
+ 
+\centering
+\resizebox{1.0\linewidth}{!}{
+\input{tabEvYields_preselection}
+}
+
+\end{block}
+
+\end{frame}
+
+
+
+% ###################################################
+\begin{frame}{Before typo fixing}
+ 
+\begin{block}{Pre-selection yields}
+
+\centering
+% \resizebox{1.0\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|}
+\hline
+Dataset & Main Analysis & Cross Check Analysis & $1-\frac{CC}{Main}$ \\ 
+\hline \hline
+Prompt A &  405 &  406 & +0.247\% \\
+Parked B & 1824 & 1836 & +0.658\% \\
+Parked C & 3453 & 3466 & +0.376\% \\
+Parked D & 3374 & 3392 & +0.533\% \\
+\hline \hline
+Total & 9056 & 9100 & +0.458\% \\
+\hline
+\end{tabular}
+% }
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{After typo fixing}
+ 
+\begin{block}{Pre-selection yields}
+
+\centering
+% \resizebox{1.0\linewidth}{!}{
+\begin{tabular}{|l|c|c|c|}
+\hline
+Dataset & Main Analysis & Cross Check Analysis & $1-\frac{CC}{Main}$ \\ 
+\hline \hline
+Prompt A &  405 &  405 &  0.00\% \\
+Parked B & 1824 & 1824 &  0.00\% \\
+Parked C & 3453 & 3452 & -0.03\% \\
+Parked D & 3374 & 3374 &  0.00\% \\
+\hline \hline
+Total & 9056 & 9055 & -0.01\% \\
+\hline
+\end{tabular}
+% }
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First at Electron+MET region} 
+ 
+\begin{block}{Event selection}
+
+The electron veto selection consists of the following cuts
+\begin{itemize}
+  \item Vertex cut 
+  \item Event quality filters (MET Filters)
+  \item ECAL and HCAL Laser filters
+  \item L1T ETM $>=40$
+  \item HLT path filter
+  \item At least Electron Veto
+  \item At least Electron Tight
+  \item Muon Veto
+  \item Dijet cut
+  \begin{itemize}
+      \item Lead dijet $ p_{\perp} > 50$ GeV
+      \item Sub-lead dijet $ p_{\perp} > 45$ GeV
+      \item Jets $ |\eta| < 4.7 $
+      \item Dijet $ \Delta\eta < 3.6 $
+      \item Dijet $ m_{jj} > 1200 $ GeV
+  \end{itemize}
+  \item MET $> 90$ GeV
+  \item MET Significance $> 4.0$
+  \item $ Min(\Delta\phi(MET,Jet_{p_{\perp}>30})))>2.3 $
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{First at Electron+MET region} 
+ 
+\begin{block}{Yield}
+
+\centering
+\resizebox{1.0\linewidth}{!}{
+\input{tabEvYields_electronMetSelection}
+}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Comparing to main analysis} 
+ 
+\begin{block}{Yield}
+
+\centering
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+Dataset & Main Analysis & Cross Check Analysis & $1-\frac{CC}{Main}$ \\ 
+\hline \hline
+Prompt A &  4 &  4 & 0.00\% \\
+Parked B & 17 & 16 & 5.88\% \\
+Parked C & 24 & 24 & 0.00\% \\
+Parked D & 24 & 24 & 0.00\% \\
+\hline \hline
+Total & 69 & 68 & -1.45\% \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\end{frame}
+
+% ###################################################
+\begin{frame}{Summary}
+ 
+\begin{block}{Summary:}
+ 
+\begin{itemize}
+  \item Now better sync at pre-selection level
+  \item Great sync at Electron-MET region
+  \item Working on Muon+MET region
+\end{itemize}
+
+\end{block}
+
+All results will be posted later today as usual at:
+\begin{center}
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/VBFHInvParkedDataCrossCheck
+\end{center}
+
+\end{frame}
+
+\end{document}
