@@ -1,0 +1,429 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+\usepackage{cancel}
+\usepackage{ulem}
+\usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{feynmp}         % For latex produced Feynman Diagrams
+
+% Rule for feynmp diagrams to be considered graphics
+\DeclareGraphicsRule{*}{mps}{*}{}
+
+% New compile sequence for feynmp
+\makeatletter
+\def\endfmffile{%
+  \fmfcmd{\p@rcent\space the end.^^J%
+          end.^^J%
+          endinput;}%
+  \if@fmfio
+    \immediate\closeout\@outfmf
+  \fi
+  \ifnum\pdfshellescape=\@ne
+    \immediate\write18{mpost \thefmffile}%
+  \fi}
+\makeatother
+
+\usetheme{Madrid}
+
+\author[João Pela]{J. Pela}
+\title[Spin Studies Update]{Spin Studies Update}
+%\subtitle{PhD 3 Months Report}
+\institute{Imperial College London}
+\date{2012-11-30}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Since Last Presentations}
+
+  \begin{block}{On the Spin Analysis}
+    
+    \begin{itemize}
+      \item Moved to HCP dataset
+      \begin{itemize}
+        \item More Data...
+        \item Same graviton sample...
+      \end{itemize}
+      \item Looking into variables to explain difference on Yield total/relative between different signals. 
+      \item Create a CVS area for current code (now shared between me and Matt).
+      \item Implemented several fixes and improvements to analysis code.
+    \end{itemize}
+
+  \end{block}
+
+  \begin{block}{Other activities}
+  
+    \begin{itemize}
+      \item Finished my central shifts for 2012
+      \item Created/Tested/Deployed new CMSSW package tag for L1 DQM Offline.
+    \end{itemize}
+
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Looking into relevant variables}
+
+  \begin{block}{Why?}
+   
+    \begin{itemize}
+      \item In the current analysis we start from the assumption the SM Higgs and Graviton cross section is the same.
+      \item After minimal diphoton BDT cuts ($score > -0.05$) the Graviton yield is approximately half the SM Higgs.
+      \item It would be important to determine which are the variables that make more graviton events get rejected or
+      moved to lower BDT categories.
+    \end{itemize}
+   
+  \end{block}
+
+  \begin{block}{What?}
+   
+    Looked at:
+    \begin{itemize}
+      \item Contribution to mass peak of events between barrel and endcap
+      \item $p_T$ and $\eta$ of lead/sublead photon
+      \item $p_T$ and $\eta$ diphoton
+      \item Minimum and Maximum photon $\eta$
+    \end{itemize}
+   
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{Changes ICHEP to HCP analysis}
+ 
+   \begin{block}{Differences Main Analysis}
+   
+    \begin{itemize}
+      \item All the changes/new features of the main HCP analysis.
+      \item Including the new calibration and VBF MVA.
+    \end{itemize}
+   
+  \end{block}
+
+     \begin{block}{Differences Spin Analysis}
+   
+    \begin{itemize}
+      \item New optimized $cos(\theta *)$ bins. Ordered by BDT category:
+      \begin{itemize}
+        \item ICHEP: 0.7, 0.3, 0.4, 0.5
+        \item HCP: 0.5, 0.4, 0.4, 0.5
+      \end{itemize}
+    \end{itemize}
+   
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{Lead photon $p_T$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonPt_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+  \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Lead photon $\eta$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/leadPhotonEta_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+    \begin{itemize}
+      \item In all categories SM Higgs and graviton are compatible within statistical errors
+      \item But High $cos(\theta *)$ plots show a different shape, peaking at $|eta| \sim 1$
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Sublead photon $p_T$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonPt_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+  \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Sublead photon $\eta$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/subleadPhotonEta_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+  \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+    \item But High $cos(\theta *)$ plots show a different shape, peaking at $|eta| \sim 1$
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Diphoton $p_T$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonPt_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+  \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+    \item But High $cos(\theta *)$ (bdt=1,2) plots show a different shape, peaking at more sharply and decaying faster for Graviton
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Diphoton $\eta$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonEta_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+    \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+    \item Several categories show significant shape differences
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Minimum photon $\eta$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMinEta_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+  \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+    \item High $cos(\theta *)$ seem bins to show that on the photons is always more central
+  \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}{Maximum photon $\eta$}
+
+  \begin{block}
+   
+     \begin{columns}
+     
+      \centering
+     
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt0_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt0_cTh1.pdf} 
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt1_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt1_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt2_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt2_cTh1.pdf}
+      
+      \column[t]{3.0cm}
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt3_cTh0.pdf} \\
+      \includegraphics[width=1.00\textwidth]{plots/diphotonMaxEta_bdt3_cTh1.pdf}
+      
+    \end{columns}
+  
+  \end{block}
+
+    \begin{itemize}
+    \item In all categories SM Higgs and graviton are compatible within statistical errors
+    \item High $cos(\theta *)$ bins as expected have higher values
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Conclusions}
+ 
+  \begin{block}{Conclusions}
+
+  \begin{itemize}
+    \item Significant shape differences where found in $p_T$ and $\eta$ distributions but suffering from low sample statistics.
+  \end{itemize}
+
+  \end{block}
+
+  \begin{block}{Next}
+
+    \begin{itemize}
+      \item Redo all plots with HCP dataset
+      \item Investigate more variables
+      \item Look into other possible event selection methodologies (example: cut based)
+    \end{itemize}
+
+  \end{block}
+  
+\end{frame}
+
+\end{document}
