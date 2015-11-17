@@ -1,0 +1,14 @@
+\begin{tabular}{|l|p{0.07\textwidth}|p{0.07\textwidth}|p{0.07\textwidth}|p{0.07\textwidth}|p{0.07\textwidth}|p{0.07\textwidth}||p{0.07\textwidth}|c||p{0.07\textwidth}|}
+\hline
+Step          & QCD                   & W+jets            & Z+jets           & SumMC & Data & Signal 120 \\
+\hline
+JetPair       & $ 1529141 \pm 103399 $& $ 23443 \pm 107 $ & $ 10769 \pm 51 $ & $ 1571309 \pm 103619 $ & $ 1435063 $ & $ 1440 \pm 21 $ \\ 
+AN            & $ 23162 \pm 2055 $    & $ 5192 \pm 60 $   & $ 3534 \pm 32 $  & $ 33018 \pm 2179 $ & $ 32324 $ & $ 856 \pm 18 $ \\ 
+DEta          & $ 605071 \pm 46654 $  & $ 11333 \pm 83 $  & $ 5123 \pm 41 $  & $ 623389 \pm 46813 $ & $ 576792 $ & $ 1171 \pm 19 $ \\ 
+MET           & $ 8540 \pm 1778 $     & $ 4250 \pm 54 $   & $ 2795 \pm 30 $  & $ 16186 \pm 1885 $ & $ 16282 $ & $ 881 \pm 17 $ \\ 
+TightMjj      & $ 6560 \pm 1445 $     & $ 2032 \pm 39 $   & $ 1357 \pm 21 $  & $ 10256 \pm 1521 $ & $ 10481 $ & $ 543 \pm 14 $ \\ 
+DijetFraction & $ 3035 \pm 1163 $     & $ 895 \pm 27 $    & $ 584 \pm 14 $   & $ 4606 \pm 1213 $ & $ XXX $ & $ 344 \pm 11 $ \\ 
+DPhiSIGNAL    & $ 688 \pm 688 $       & $ 217 \pm 14 $    & $ 130 \pm 7 $    & $ 1057 \pm 714 $ & XXX & $ 137 \pm 7 $ \\ 
+DPhiQCD       & $ 2206 \pm 927 $      & $ 129 \pm 10 $    & $ 73 \pm 4 $     & $ 2421 \pm 945 $ & $ 1873 $ & $ 22 \pm 3 $ \\ 
+\hline
+\end{tabular}
