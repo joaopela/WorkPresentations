@@ -1,0 +1,169 @@
+\documentclass[8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{epsfig}
+\usepackage{cancel}
+\usepackage{ulem}
+\usepackage{threeparttable} % Joao Pela: 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{feynmp}         % For latex produced Feynman Diagrams
+\usepackage{graphicx}
+
+% Rule for feynmp diagrams to be considered graphics
+\DeclareGraphicsRule{*}{mps}{*}{}
+
+% New compile sequence for feynmp
+\makeatletter
+\def\endfmffile{%
+  \fmfcmd{\p@rcent\space the end.^^J%
+          end.^^J%
+          endinput;}%
+  \if@fmfio
+    \immediate\closeout\@outfmf
+  \fi
+  \ifnum\pdfshellescape=\@ne
+    \immediate\write18{mpost \thefmffile}%
+  \fi}
+\makeatother
+
+\usetheme{Madrid}
+
+\author[João Pela]{J. Pela}
+\title[Spin Studies Update]{Spin Studies Update}
+%\subtitle{PhD 3 Months Report}
+\institute{Imperial College London}
+\date{2013-03-08}
+
+% The log drawn in the upper right corner.
+\logo{\includegraphics[height=0.115\paperheight]{img/Logo_CMSICL.png}}
+
+\begin{document}
+\setlength{\unitlength}{1mm}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% \begin{frame}{Work being developed}
+% 
+%   \begin{block}{Since Last Presentations}
+%     
+%     \begin{itemize}
+%       \item 
+%     \end{itemize}
+% 
+%   \end{block}
+% 
+% \end{frame}
+% 
+% \begin{frame}{Analysis definition: Mass Factorized Based}
+% 
+%   \begin{block}{Analysis Flow}
+%  
+%     \begin{itemize}
+%       \item Start from the categorization of the \textit{Mass Factorized} Analysis taking categories 0 to 3 
+%       \item Split events on those categories into $cos(\theta^*)$ bins.
+%       \item Produce dataset over new categories ($4 \times 2$) from data and MC signal samples
+%       \item Create and fit Signal Model ($3 \times$ Gaussian) to MC signal SM 
+%       \item Fit same model to Alternative Model (Spin 2)
+%       \item Fit background Model to data sideband and extrapolate yield at signal region
+%       \item Compute separation from previous values (to be done)
+%       \item Fix all parameters on all the categories of Signal Model
+%       \item Fit Signal Model (floating signal strength $\mu$) + Background Model to data.
+%     \end{itemize}
+%  
+%   \end{block}
+% 
+%     \begin{block}{Details}
+%  
+%     \begin{itemize}
+%       \item Signal area $2\%$ around 125 $GeV$.
+%     \end{itemize}
+%  
+%     \end{block}
+% 
+%     \begin{block}{To be done:}
+%  
+%     \begin{itemize}
+%       \item Normalization of Alternative Model (Spin 2) to SM Model total number of events.
+%       \item Pass event Yields to separation code 
+%     \end{itemize}
+%  
+%     \end{block}
+% 
+% \end{frame}
+% 
+% \begin{frame}{Analysis definition: Cut based}
+% 
+%   \begin{block}{Analysis Flow}
+%  
+%     \begin{itemize}
+%       \item Start from the categorization of the \textit{Cut Based} Analysis taking categories 0 to 3 
+%       \item Split events on those categories into 5 $cos(\theta^*)$ bins (0.2 spacing).
+%       \item Produce dataset over new categories ($4 \times 5$) from data and MC signal samples
+%       \item Create and fit Signal Model ($3 \times$ Gaussian) to MC signal SM 
+%       \item Create efficiency function to flat out $cos(\theta^*)$ for SM 
+%       \item Fit Signal Model to Alternative Sample (Spin 2) and apply efficiency correction (to be done)
+%       \item Fit background Model to data sideband and extrapolate yield at signal region
+%       \item Compute separation from previous values (to be done)
+%       \item Fix all parameters on all the categories of Signal Model (to be done)
+%       \item Fit Signal Model (floating signal strength $\mu$) + Background Model to data. (to be done)
+%     \end{itemize}
+%  
+%   \end{block}
+% 
+%     \begin{block}{Details}
+%  
+%     \begin{itemize}
+%       \item Signal area $2\%$ around 125 $GeV$.
+%     \end{itemize}
+%  
+%     \end{block}
+% 
+%     \begin{block}{To be done:}
+%  
+%     \begin{itemize}
+%       \item Normalization of Alternative Model (Spin 2) to SM Model total number of events.
+%       \item Pass event Yields to separation code 
+%     \end{itemize}
+%  
+%     \end{block}
+% 
+% \end{frame}
+
+\begin{frame}{Normalization of MC Models}
+
+  For consistency the Model B (Spin 2 Model) is normalized to the total number of events over all categories after diphoton BDT 
+  cut. 
+  \begin{block}{Absolute Values}
+
+    \resizebox{\linewidth}{!}{
+    \input{tables/ModelB_NormalizationAbsolute}
+    }
+    
+  \end{block}
+
+  \begin{block}{Relative}
+
+    \resizebox{\linewidth}{!}{
+    \input{tables/ModelB_NormalizationRelative}
+    }    
+
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{Conclusions}
+ 
+ 
+\end{frame}
+
+\begin{frame}{Backup Slides}[noframenumbering]
+ 
+ \begin{huge}Backup Slides\end{huge}
+ 
+\end{frame}
+
+\end{document}
